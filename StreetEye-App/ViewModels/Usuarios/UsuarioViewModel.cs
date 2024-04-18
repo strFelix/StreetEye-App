@@ -1,5 +1,6 @@
 ﻿using StreetEye_App.Models;
 using StreetEye_App.Services.Usuarios;
+using StreetEye_App.Views.Usuarios;
 using System.Windows.Input;
 
 namespace StreetEye_App.ViewModels.Usuarios
@@ -18,11 +19,15 @@ namespace StreetEye_App.ViewModels.Usuarios
         {
             LoginCommand = new Command(async () => await AutenticarUsuarioAsync());
             RegistrarCommand = new Command(async () => await RegistrarUsuarioAsync());
+            DirecionarLoginViewCommand = new Command(async () => await NavigateToLoginAsync());
+            DirecionarCadastroViewCommand = new Command(async () => await NavigateToCadastroAsync());
         }
 
         #region Commands
         public ICommand LoginCommand { get; set; }
         public ICommand RegistrarCommand { get; set; }
+        public ICommand DirecionarLoginViewCommand { get; set; }
+        public ICommand DirecionarCadastroViewCommand { get; set; }
         #endregion
 
         #region Properties
@@ -238,5 +243,15 @@ namespace StreetEye_App.ViewModels.Usuarios
         }
         #endregion
 
+        #region Navigation
+        public async Task NavigateToLoginAsync()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new LoginView());
+        }
+        public async Task NavigateToCadastroAsync()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new CadastroView());
+        }
+        #endregion
     }
 }

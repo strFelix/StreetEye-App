@@ -2,23 +2,117 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StreetEye_App.Views.Usuarios.CadastroView"
-             Title="CadastroView">
+             Title="CadastroView"
+             Shell.PresentationMode="Animated">
+
+
     <ScrollView>
-        <VerticalStackLayout>
-            <Label Text="StreetEye" FontSize="Large" HorizontalOptions="Center" />
-            <Entry Placeholder="Email" Text="{Binding Email}" />
-            <Entry Placeholder="Senha" Text="{Binding Password}" IsPassword="True" />
-            <Entry Placeholder="Nome" Text="{Binding Nome}"/>
-            <Entry Placeholder="AAAA/MM/DD" Text="{Binding Data}"/>
-            <Entry Placeholder="Telefone" Text="{Binding Telefone}"/>
-            <Entry Placeholder="Endereço" Text="{Binding Endereco}"/>
-            <Entry Placeholder="Numero endereço" Text="{Binding NumeroEndereco}"/>
-            <Entry Placeholder="Complemento" Text="{Binding Complemento}"/>
-            <Entry Placeholder="Bairro" Text="{Binding Bairro}"/>
-            <Entry Placeholder="Cidade" Text="{Binding Cidade}"/>
-            <Entry Placeholder="UF" Text="{Binding Uf}"/>
-            <Entry Placeholder="CEP" Text="{Binding Cep}"/>
-            <Button Text="Registrar" Command="{Binding RegistrarCommand}" />
-        </VerticalStackLayout>
+        <StackLayout Spacing="10" HorizontalOptions="Center">
+
+            <Grid ColumnSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220" />
+                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition Width="120" />
+                </Grid.ColumnDefinitions>
+
+
+                <Entry Grid.Column="0" Grid.Row="0" 
+                    Placeholder="Nome:" TextColor="Black" 
+                    Text="{Binding Nome}" Keyboard="Text"/>
+
+                <Entry Grid.Column="1" Grid.Row="0" 
+                    Placeholder="DDD:" TextColor="Black" />
+
+                <Entry Grid.Column="2" Grid.Row="0" 
+                    Placeholder="Telefone:" TextColor="Black" 
+                    Text="{Binding Telefone}" Keyboard="Telephone"/>
+
+            </Grid>
+
+            <Grid Padding="0,0,0,20" RowSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="420" />
+                </Grid.ColumnDefinitions>
+
+                <Entry Grid.Row="0" Grid.Column="0" 
+                    Placeholder="Data de nascimeto: AAAA-MM-DD" TextColor="Black" 
+                    Text="{Binding Data}"/>
+                
+                <Entry Grid.Row="1" Grid.Column="0" 
+                   Placeholder="Email" TextColor="Black" 
+                   Text="{Binding Email}" Keyboard="Email"/>
+
+                <Entry Grid.Row="2" Grid.Column="1"  
+                   Placeholder="Senha" TextColor="Black" IsPassword="True"
+                   Text="{Binding Password}"/>
+            </Grid>
+    
+            
+            <Entry Placeholder="CEP:" TextColor="Black" Text="{Binding Cep}"/>
+            
+            <Grid ColumnSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220" />
+                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition Width="120" />
+                </Grid.ColumnDefinitions>
+
+                <Entry Grid.Row="0" Grid.Column="0"
+                    Placeholder="Endereço:" TextColor="Black" Keyboard="Text"
+                    Text="{Binding Endereco}"/>
+                
+                <Entry Grid.Row="0" Grid.Column="1"
+                    Placeholder="Nº:" TextColor="Black" Keyboard="Numeric" 
+                    Text="{Binding NumeroEndereco}"/>
+                
+                <Entry Grid.Row="0" Grid.Column="2" 
+                    Placeholder="Complemento:" TextColor="Black" 
+                    Text="{Binding Complemento}"/>
+
+            </Grid>
+
+            <Entry Placeholder="Bairro:" TextColor="Black" Text="{Binding Bairro}"/>
+
+            <Grid ColumnSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="350" />
+                    <ColumnDefinition Width="60" />
+                </Grid.ColumnDefinitions>
+
+                <Entry Grid.Row="1" Grid.Column="0"
+                    Placeholder="Cidade:" TextColor="Black" 
+                    Text="{Binding Cidade}"/>
+
+                <Entry Grid.Row="1" Grid.Column="1"
+                    Placeholder="UF:" TextColor="Black" 
+                    Text="{Binding Uf}"/>
+
+            </Grid>
+            
+            <Button
+                BackgroundColor="Black"
+                Padding="60,0,60,0"
+                Text="Cadastrar" 
+                TextColor="White"
+                Command="{Binding RegistrarCommand}"
+                HorizontalOptions="Center" />
+        </StackLayout>
+        
     </ScrollView>
 </ContentPage>
