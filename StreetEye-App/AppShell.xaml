@@ -5,12 +5,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:StreetEye_App"
     xmlns:usuarios="clr-namespace:StreetEye_App.Views.Usuarios"
+    xmlns:responsaveis="clr-namespace:StreetEye_App.Views.Responsaveis"
     Shell.FlyoutBehavior="Disabled"
     Title="StreetEye_App">
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate usuarios:CadastroView}"
+        ContentTemplate="{DataTemplate usuarios:LoginView}"
         Route="MainPage" />
 
 </Shell>

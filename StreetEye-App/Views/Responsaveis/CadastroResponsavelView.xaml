@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StreetEye_App.Views.Responsaveis.CadastroResponsavelView"
+             Title="CadastroResponsavelView">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Label Text="StreetEye" FontSize="Large" HorizontalOptions="Center" />
+            <Entry Placeholder="Nome" Text="{Binding Nome}"/>
+            <Entry Placeholder="Data de nascimento" Text="{Binding Data}"/>
+            <Entry Placeholder="Telefone" Text="{Binding Telefone}"/>
+            <Entry Placeholder="Endereço" Text="{Binding Endereco}"/>
+            <Entry Placeholder="Numero endereço" Text="{Binding NumeroEndereco}"/>
+            <Entry Placeholder="Complemento" Text="{Binding Complemento}"/>
+            <Entry Placeholder="Bairro" Text="{Binding Bairro}"/>
+            <Entry Placeholder="Cidade" Text="{Binding Cidade}"/>
+            <Entry Placeholder="UF" Text="{Binding Uf}"/>
+            <Entry Placeholder="CEP" Text="{Binding Cep}"/>
+            <Button Text="Registrar" Command="{Binding RegistrarResponsavelCommand}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
