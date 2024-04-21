@@ -55,10 +55,28 @@
                    Placeholder="Senha" TextColor="Black" IsPassword="True"
                    Text="{Binding Password}"/>
             </Grid>
-    
+
+
+            <Grid ColumnSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Entry Grid.Row="0" Grid.Column="0" 
+                    Placeholder="CEP:" TextColor="Black" 
+                    Text="{Binding Cep}"/>
+                
+                <Button Grid.Row="0" Grid.Column="1"
+                    Text="Buscar CEP" BackgroundColor="Black" TextColor="White" HorizontalOptions="Center" 
+                    Command="{Binding GetEnderecoByCepCommand}"/>
+
+            </Grid>
             
-            <Entry Placeholder="CEP:" TextColor="Black" Text="{Binding Cep}"/>
-            
+
             <Grid ColumnSpacing="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />

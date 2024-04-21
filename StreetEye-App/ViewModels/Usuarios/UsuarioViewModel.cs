@@ -1,4 +1,5 @@
 ﻿using StreetEye_App.Models;
+using StreetEye_App.Services.Enderecos;
 using StreetEye_App.Services.Usuarios;
 using StreetEye_App.Views.Usuarios;
 using System.Windows.Input;
@@ -8,10 +9,12 @@ namespace StreetEye_App.ViewModels.Usuarios
     public class UsuarioViewModel : BaseViewModel
     {
         private readonly UsuarioService _usuarioService;
+        private readonly EnderecoService _enderecoService;
 
         public UsuarioViewModel()
         {
             _usuarioService = new UsuarioService();
+            _enderecoService = new EnderecoService();
             InicializarCommads();
         }
 
@@ -19,6 +22,7 @@ namespace StreetEye_App.ViewModels.Usuarios
         {
             LoginCommand = new Command(async () => await AutenticarUsuarioAsync());
             RegistrarCommand = new Command(async () => await RegistrarUsuarioAsync());
+            GetEnderecoByCepCommand = new Command(async () => await GetEnderecoByCepAsync());
             DirecionarLoginViewCommand = new Command(async () => await NavigateToLoginAsync());
             DirecionarCadastroViewCommand = new Command(async () => await NavigateToCadastroAsync());
         }
@@ -26,8 +30,10 @@ namespace StreetEye_App.ViewModels.Usuarios
         #region Commands
         public ICommand LoginCommand { get; set; }
         public ICommand RegistrarCommand { get; set; }
+        public ICommand GetEnderecoByCepCommand { get; set; }
         public ICommand DirecionarLoginViewCommand { get; set; }
         public ICommand DirecionarCadastroViewCommand { get; set; }
+
         #endregion
 
         #region Properties
@@ -212,13 +218,13 @@ namespace StreetEye_App.ViewModels.Usuarios
                         Nome = Nome,
                         DataNascimento = Data,
                         Telefone = Telefone,
+                        CEP = Cep,
                         Endereco = Endereco,
                         NumeroEndereco = NumeroEndereco,
                         Complemento = Complemento,
                         Bairro = Bairro,
                         Cidade = Cidade,
-                        UF = Uf,
-                        CEP = Cep
+                        UF = Uf
                     }
                 };
 
@@ -228,6 +234,9 @@ namespace StreetEye_App.ViewModels.Usuarios
                 {
                     await Application.Current.MainPage
                         .DisplayAlert("Informações", "Usuário registrado com sucesso!", "Ok");
+
+                    await Application.Current.MainPage
+                       .Navigation.PopAsync();
                 }
                 else
                 {
@@ -241,6 +250,33 @@ namespace StreetEye_App.ViewModels.Usuarios
                         .DisplayAlert("Informação", ex.Message + "\n" + ex.InnerException, "Ok");
             }
         }
+
+        public async Task GetEnderecoByCepAsync()
+        {
+            try
+            {
+                Endereco endereco = await _enderecoService.GetEnderecoByCepAsync(Cep);
+
+                if (endereco != null)
+                {
+                    Endereco = endereco.Logradouro;
+                    Bairro = endereco.Bairro;
+                    Cidade = endereco.Localidade;
+                    Uf = endereco.Uf;
+                }
+                else
+                {
+                    await Application.Current.MainPage
+                        .DisplayAlert("Informações", "CEP não encontrado.", "Ok");
+                }
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage
+                        .DisplayAlert("Informação", ex.Message + "\n" + ex.InnerException, "Ok");
+            }
+        }
+
         #endregion
 
         #region Navigation
