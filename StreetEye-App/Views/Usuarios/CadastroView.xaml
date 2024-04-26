@@ -8,16 +8,16 @@
 
 
     <ScrollView>
-        <StackLayout Spacing="10" HorizontalOptions="Center">
+        <StackLayout Spacing="10" Margin="15" HorizontalOptions="Center">
 
             <Grid ColumnSpacing="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="220" />
-                    <ColumnDefinition Width="60" />
-                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="210" />
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="110" />
                 </Grid.ColumnDefinitions>
 
 
@@ -26,11 +26,12 @@
                     Text="{Binding Nome}" Keyboard="Text"/>
 
                 <Entry Grid.Column="1" Grid.Row="0" 
-                    Placeholder="DDD:" TextColor="Black" />
+                    Placeholder="DDD:" TextColor="Black" 
+                    MaxLength="2" Keyboard="Numeric"/>
 
                 <Entry Grid.Column="2" Grid.Row="0" 
                     Placeholder="Telefone:" TextColor="Black" 
-                    Text="{Binding Telefone}" Keyboard="Telephone"/>
+                    Text="{Binding Telefone}" Keyboard="Telephone" MaxLength="9"/>
 
             </Grid>
 
@@ -41,19 +42,22 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="420" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Entry Grid.Row="0" Grid.Column="0" 
-                    Placeholder="Data de nascimeto: AAAA-MM-DD" TextColor="Black" 
-                    Text="{Binding Data}"/>
-                
+                <Entry Grid.Row="0" Grid.Column="0"
+                   Placeholder="Data de nascimento:" TextColor="Black"
+                   TextChanged="OnDateEntryTextChanged"
+                   Text="{Binding Data}"
+                   Keyboard="Numeric"
+                   MaxLength="10" />
+
                 <Entry Grid.Row="1" Grid.Column="0" 
-                   Placeholder="Email" TextColor="Black" 
+                   Placeholder="Email:" TextColor="Black" 
                    Text="{Binding Email}" Keyboard="Email"/>
 
                 <Entry Grid.Row="2" Grid.Column="1"  
-                   Placeholder="Senha" TextColor="Black" IsPassword="True"
+                   Placeholder="Senha:" TextColor="Black" IsPassword="True"
                    Text="{Binding Password}"/>
             </Grid>
 
@@ -69,7 +73,7 @@
 
                 <Entry Grid.Row="0" Grid.Column="0" 
                     Placeholder="CEP:" TextColor="Black" 
-                    Text="{Binding Cep}"/>
+                    Text="{Binding Cep}" MaxLength="8" Keyboard="Numeric"/>
                 
                 <Button Grid.Row="0" Grid.Column="1"
                     Text="Buscar CEP" BackgroundColor="Black" TextColor="White" HorizontalOptions="Center" 
@@ -83,18 +87,19 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="220" />
-                    <ColumnDefinition Width="60" />
-                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="190" />
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="110" />
                 </Grid.ColumnDefinitions>
 
                 <Entry Grid.Row="0" Grid.Column="0"
                     Placeholder="Endereço:" TextColor="Black" Keyboard="Text"
-                    Text="{Binding Endereco}"/>
+                    Text="{Binding Endereco}" IsEnabled="False"/>
                 
                 <Entry Grid.Row="0" Grid.Column="1"
                     Placeholder="Nº:" TextColor="Black" Keyboard="Numeric" 
-                    Text="{Binding NumeroEndereco}"/>
+                    Text="{Binding NumeroEndereco}"
+                    />
                 
                 <Entry Grid.Row="0" Grid.Column="2" 
                     Placeholder="Complemento:" TextColor="Black" 
@@ -102,7 +107,7 @@
 
             </Grid>
 
-            <Entry Placeholder="Bairro:" TextColor="Black" Text="{Binding Bairro}"/>
+            <Entry Placeholder="Bairro:" TextColor="Black" Text="{Binding Bairro}" IsEnabled="False"/>
 
             <Grid ColumnSpacing="10">
                 <Grid.RowDefinitions>
@@ -110,17 +115,18 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="350" />
+                    <ColumnDefinition Width="310" />
                     <ColumnDefinition Width="60" />
                 </Grid.ColumnDefinitions>
 
                 <Entry Grid.Row="1" Grid.Column="0"
                     Placeholder="Cidade:" TextColor="Black" 
-                    Text="{Binding Cidade}"/>
+                    Text="{Binding Cidade}" IsEnabled="False"/>
 
                 <Entry Grid.Row="1" Grid.Column="1"
                     Placeholder="UF:" TextColor="Black" 
-                    Text="{Binding Uf}"/>
+                    Text="{Binding Uf}"
+                    MaxLength="2" IsEnabled="False"/>
 
             </Grid>
             

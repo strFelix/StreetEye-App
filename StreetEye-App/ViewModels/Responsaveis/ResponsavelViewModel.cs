@@ -137,7 +137,7 @@ namespace StreetEye_App.ViewModels.Responsaveis
                 Utilizador utilizadorResponsavel = new Utilizador
                 {
                     Nome = Nome,
-                    DataNascimento = Data,
+                    //DataNascimento = Data,
                     Telefone = Telefone,
                     Endereco = Endereco,
                     NumeroEndereco = NumeroEndereco,

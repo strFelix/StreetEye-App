@@ -43,7 +43,7 @@ namespace StreetEye_App.ViewModels.Usuarios
 
         //utilizador
         private string nome = string.Empty;
-        private DateTime data;
+        private String data;
         private string telefone = string.Empty;
         private string endereco = string.Empty;
         private string numeroEndereco = string.Empty;
@@ -81,7 +81,7 @@ namespace StreetEye_App.ViewModels.Usuarios
                 OnPropertyChanged(nameof(Nome));
             }
         }
-        public DateTime Data
+        public string Data
         {
             get => data;
             set
@@ -216,7 +216,7 @@ namespace StreetEye_App.ViewModels.Usuarios
                     Utilizador = new Utilizador()
                     {
                         Nome = Nome,
-                        DataNascimento = Data,
+                        DataNascimento = DateTime.Parse(Data),
                         Telefone = Telefone,
                         CEP = Cep,
                         Endereco = Endereco,
