@@ -25,6 +25,7 @@ public partial class CadastroView : ContentPage
             newText = newText.Insert(5, "/");
         }
 
-    ((Entry)sender).Text = newText;
+        dateEntry.CursorPosition = newText.Length;
+        ((Entry)sender).Text = newText;
     }
 }
