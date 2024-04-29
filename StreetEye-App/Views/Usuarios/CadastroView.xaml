@@ -16,7 +16,7 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="210" />
-                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="60" />
                     <ColumnDefinition Width="110" />
                 </Grid.ColumnDefinitions>
 
@@ -87,9 +87,9 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="190" />
-                    <ColumnDefinition Width="50" />
-                    <ColumnDefinition Width="110" />
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition Width="120" />
                 </Grid.ColumnDefinitions>
 
                 <Entry Grid.Row="0" Grid.Column="0"
@@ -115,8 +115,8 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="310" />
-                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition Width="320" />
+                    <ColumnDefinition Width="70" />
                 </Grid.ColumnDefinitions>
 
                 <Entry Grid.Row="1" Grid.Column="0"
