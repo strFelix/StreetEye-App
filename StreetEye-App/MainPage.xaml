@@ -7,28 +7,7 @@
 
     <VerticalStackLayout Spacing="30" HorizontalOptions="Center">
 
-        <Label
-            Text="Street Eye"
-            FontSize="Medium"
-            TextColor="Black"
-            HorizontalOptions="Center"
-            VerticalOptions="Center"/>
-
-        <Button
-            BackgroundColor="Black"
-            TextColor="White"
-            Padding="60,0,60,0"
-            Text="Cadastrar" FontAttributes="Bold"  
-            Command="{Binding DirecionarCadastroViewCommand}"/>
-
-        <Button
-            BackgroundColor="White"
-            BorderColor="LightGray"
-            BorderWidth="2"
-            TextColor="Black"
-            Padding="60,0,60,0"
-            Text="Fazer login" FontAttributes="Bold"
-            Command="{Binding DirecionarLoginViewCommand}"/>
+        <Label>Funcionou!!!</Label>
 
     </VerticalStackLayout>
 </ContentPage>

@@ -64,16 +64,28 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\Usuarios\CadastroUsuarioView.xaml.cs">
+	    <DependentUpon>CadastroUsuarioView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Usuarios\LoginUsuarioView.xaml.cs">
+	    <DependentUpon>LoginUsuarioView.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="MainPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Responsaveis\CadastroResponsavelView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Usuarios\CadastroView.xaml">
+	  <MauiXaml Update="Views\Usuarios\CadastroUsuarioView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Usuarios\LoginView.xaml">
+	  <MauiXaml Update="Views\Usuarios\LoginUsuarioView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Usuarios\PaginaInicialUsuarioView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

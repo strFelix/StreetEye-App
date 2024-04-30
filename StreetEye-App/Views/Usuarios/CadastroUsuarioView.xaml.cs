@@ -2,11 +2,11 @@ using StreetEye_App.ViewModels.Usuarios;
 
 namespace StreetEye_App.Views.Usuarios;
 
-public partial class CadastroView : ContentPage
+public partial class CadastroUsuarioView : ContentPage
 {
     UsuarioViewModel viewModel;
 
-    public CadastroView()
+    public CadastroUsuarioView()
     {
         InitializeComponent();
         viewModel = new UsuarioViewModel();

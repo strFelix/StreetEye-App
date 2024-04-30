@@ -2,11 +2,11 @@ using StreetEye_App.ViewModels.Usuarios;
 
 namespace StreetEye_App.Views.Usuarios;
 
-public partial class LoginView : ContentPage
+public partial class LoginUsuarioView : ContentPage
 {
     UsuarioViewModel viewModel;
 
-    public LoginView()
+    public LoginUsuarioView()
     {
         InitializeComponent();
         viewModel = new UsuarioViewModel();

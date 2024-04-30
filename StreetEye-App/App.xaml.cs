@@ -1,4 +1,6 @@
-﻿namespace StreetEye_App
+﻿using StreetEye_App.Views.Usuarios;
+
+namespace StreetEye_App
 {
     public partial class App : Application
     {
@@ -6,7 +8,7 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(new PaginaInicialUsuarioView());
         }
     }
 }

@@ -282,11 +282,11 @@ namespace StreetEye_App.ViewModels.Usuarios
         #region Navigation
         public async Task NavigateToLoginAsync()
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new LoginView());
+            await Application.Current.MainPage.Navigation.PushAsync(new LoginUsuarioView());
         }
         public async Task NavigateToCadastroAsync()
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new CadastroView());
+            await Application.Current.MainPage.Navigation.PushAsync(new CadastroUsuarioView());
         }
         #endregion
     }
