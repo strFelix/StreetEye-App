@@ -235,8 +235,7 @@ namespace StreetEye_App.ViewModels.Usuarios
                     await Application.Current.MainPage
                         .DisplayAlert("Informações", "Usuário registrado com sucesso!", "Ok");
 
-                    await Application.Current.MainPage
-                       .Navigation.PopAsync();
+                    await NavigateToLoginAsync();
                 }
                 else
                 {
