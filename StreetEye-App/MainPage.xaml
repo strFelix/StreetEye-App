@@ -7,7 +7,20 @@
 
     <VerticalStackLayout Spacing="30" HorizontalOptions="Center">
 
-        <Label>Funcionou!!!</Label>
+        <ListView x:Name="listView" HasUnevenRows="True" ItemsSource="{Binding Semaforos}" SelectedItem="{ Binding SemaforoSelecionado }">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding Descricao}" FontSize="18" FontAttributes="Bold"/>
+                            <Label Text="{Binding Endereco}" FontSize="14"/>
+                            <Label Text="{Binding Numero}" FontSize="14"/>
+                            <Label Text="{Binding ViaCruzamento}" FontSize="14"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
     </VerticalStackLayout>
 </ContentPage>
