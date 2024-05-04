@@ -82,6 +82,9 @@
 	  <MauiXaml Update="Views\Usuarios\CadastroUsuarioView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Usuarios\ConfiguracaoUsuarioView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Usuarios\LoginUsuarioView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
