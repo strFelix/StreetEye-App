@@ -31,6 +31,20 @@ namespace StreetEye_App.ViewModels.Semaforos
         private string latitude = string.Empty;
         private string longitude = string.Empty;
 
+        private Semaforo semaforoSelecionado;
+        public Semaforo SemaforoSelecionado
+        {
+            get { return semaforoSelecionado; }
+            set
+            {
+                if (value != null)
+                {
+                    semaforoSelecionado = value;
+                    Shell.Current.GoToAsync($"exibirSemaforoView?pId={semaforoSelecionado.Id}");
+                }
+            }
+        }
+
         public int Id { get => id; set => id = value; }
         public string Descricao { get => descricao; set => descricao = value; }
         public int IntervaloAberto { get => intervaloAberto; set => intervaloAberto = value; }

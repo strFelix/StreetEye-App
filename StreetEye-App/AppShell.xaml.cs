@@ -1,4 +1,5 @@
 ﻿using StreetEye_App.Views.Responsaveis;
+using StreetEye_App.Views.Semaforos;
 
 namespace StreetEye_App
 {
@@ -7,6 +8,7 @@ namespace StreetEye_App
         public AppShell()
         {
             Routing.RegisterRoute("cadResponsavelView", typeof(CadastroResponsavelView));
+            Routing.RegisterRoute("exibirSemaforoView", typeof(SemaforoView));
             InitializeComponent();
         }
     }
