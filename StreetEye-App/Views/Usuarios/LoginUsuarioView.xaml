@@ -4,12 +4,17 @@
              x:Class="StreetEye_App.Views.Usuarios.LoginUsuarioView"
              Background="WhiteSmoke">
     <ScrollView>
-        <StackLayout Spacing="20" Margin="15" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center">
+
+        <VerticalStackLayout Spacing="30" Padding="100">
+
             <Image Source="crossolutions_semtexto.png" HeightRequest="100"/>
+
             <Label Text="StreetEye" FontSize="Large" HorizontalOptions="Center" TextColor="Black" />
             <Entry Placeholder="Email" Text="{Binding Email}" TextColor="Black"/>
             <Entry Placeholder="Senha" Text="{Binding Password}" IsPassword="True" TextColor="Black" />
             <Button Text="Entrar" Command="{Binding LoginCommand}" TextColor="White" BackgroundColor="Black" />
-        </StackLayout>
+            
+        </VerticalStackLayout>
+
     </ScrollView>
 </ContentPage>

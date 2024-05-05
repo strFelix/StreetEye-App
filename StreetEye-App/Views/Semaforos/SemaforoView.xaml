@@ -8,18 +8,18 @@
     <ScrollView>
         <Frame BackgroundColor="Transparent" HeightRequest="{OnPlatform Android=190}" Padding="0" HasShadow="false" CornerRadius="10">
 
-            <HorizontalStackLayout Padding="10">
-                <Image Source="streeteye.png" WidthRequest="100" VerticalOptions="Start" />
+            <HorizontalStackLayout Spacing="30" Padding="20">
+                <Image Source="streeteye.png" WidthRequest="120" VerticalOptions="Start" />
                 <VerticalStackLayout>
                     <Label Text="Principal" FontSize="18" FontAttributes="Bold" TextColor="Black"/>
                     <Label Text="Rua Alcantara" FontSize="14" TextColor="Black"/>
                     <Label Text="13" FontSize="14" TextColor="Black"/>
                     <Label Text="Gulherme Coatching" FontSize="14" TextColor="Black"/>
                 </VerticalStackLayout>
-                <VerticalStackLayout>
+                <HorizontalStackLayout>
                     <Label Text="Cor do farol: " TextColor="Black" />
                     <Label Text="{Binding TrafficLightColor}" TextColor="Black"/>
-                </VerticalStackLayout>
+                </HorizontalStackLayout>
             </HorizontalStackLayout>
 
         </Frame>

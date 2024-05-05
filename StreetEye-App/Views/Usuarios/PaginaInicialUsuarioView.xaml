@@ -5,7 +5,7 @@
              Title="PaginaInicialUsuarioView"
              BackgroundColor="White">
     
-    <VerticalStackLayout Spacing="30" Padding="10" HorizontalOptions="Center">
+    <VerticalStackLayout Spacing="30" Padding="100" HorizontalOptions="Center">
 
         <Image Source="crossolutions_semtexto.png" HeightRequest="100"/>
         

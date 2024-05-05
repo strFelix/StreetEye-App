@@ -11,14 +11,14 @@
                 <DataTemplate>
                     <ViewCell>
                         <Frame 
-                            BackgroundColor="Transparent" HeightRequest="{OnPlatform Android=190}" Padding="0" HasShadow="false" CornerRadius="10">
+                            BackgroundColor="Transparent" HeightRequest="{OnPlatform Android=190}" Padding="10" HasShadow="false" CornerRadius="10">
                             <HorizontalStackLayout Padding="10">
-                                <Image Source="streeteye.png" WidthRequest="100" VerticalOptions="Start" />
+                                <Image Source="streeteye.png" WidthRequest="120" VerticalOptions="Start" />
                                 <VerticalStackLayout>
-                                    <Label Text="{Binding Descricao}" FontSize="18" FontAttributes="Bold" TextColor="Black"/>
-                                    <Label Text="{Binding Endereco}" FontSize="14" TextColor="Black"/>
-                                    <Label Text="{Binding Numero}" FontSize="14" TextColor="Black"/>
-                                    <Label Text="{Binding ViaCruzamento}" FontSize="14" TextColor="Black"/>
+                                    <Label Text="{Binding Descricao}" FontSize="26" FontAttributes="Bold" TextColor="Black"/>
+                                    <Label Text="{Binding Endereco}" FontSize="22" TextColor="Black"/>
+                                    <Label Text="{Binding Numero}" FontSize="22" TextColor="Black"/>
+                                    <Label Text="{Binding ViaCruzamento}" FontSize="20" TextColor="Black"/>
                                 </VerticalStackLayout>
                             </HorizontalStackLayout>
                         </Frame>
