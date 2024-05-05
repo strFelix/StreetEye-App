@@ -5,18 +5,18 @@
              Title="CadastroResponsavelView">
     <ScrollView>
         <VerticalStackLayout>
-            <Label Text="StreetEye" FontSize="Large" HorizontalOptions="Center" />
-            <Entry Placeholder="Nome" Text="{Binding Nome}"/>
-            <Entry Placeholder="Data de nascimento" Text="{Binding Data}"/>
-            <Entry Placeholder="Telefone" Text="{Binding Telefone}"/>
-            <Entry Placeholder="Endereço" Text="{Binding Endereco}"/>
-            <Entry Placeholder="Numero endereço" Text="{Binding NumeroEndereco}"/>
-            <Entry Placeholder="Complemento" Text="{Binding Complemento}"/>
-            <Entry Placeholder="Bairro" Text="{Binding Bairro}"/>
-            <Entry Placeholder="Cidade" Text="{Binding Cidade}"/>
-            <Entry Placeholder="UF" Text="{Binding Uf}"/>
-            <Entry Placeholder="CEP" Text="{Binding Cep}"/>
-            <Button Text="Registrar" Command="{Binding RegistrarResponsavelCommand}" />
+            <Label Text="StreetEye" TextColor="Black" FontSize="Large" HorizontalOptions="Center" />
+            <Entry Placeholder="Nome" Text="{Binding Nome}" TextColor="Black"/>
+            <Entry Placeholder="Data de nascimento" Text="{Binding Data}" TextColor="Black"/>
+            <Entry Placeholder="Telefone" Text="{Binding Telefone}" TextColor="Black"/>
+            <Entry Placeholder="Endereço" Text="{Binding Endereco}" TextColor="Black"/>
+            <Entry Placeholder="Numero endereço" Text="{Binding NumeroEndereco}" TextColor="Black"/>
+            <Entry Placeholder="Complemento" Text="{Binding Complemento}" TextColor="Black"/>
+            <Entry Placeholder="Bairro" Text="{Binding Bairro}" TextColor="Black"/>
+            <Entry Placeholder="Cidade" Text="{Binding Cidade}" TextColor="Black"/>
+            <Entry Placeholder="UF" Text="{Binding Uf}" TextColor="Black"/>
+            <Entry Placeholder="CEP" Text="{Binding Cep}" TextColor="Black"/>
+            <Button Text="Registrar" Command="{Binding RegistrarResponsavelCommand}" TextColor="Black"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

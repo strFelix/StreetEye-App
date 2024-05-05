@@ -11,12 +11,16 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Padding="10">
-                            <Label Text="{Binding Descricao}" FontSize="18" FontAttributes="Bold"/>
-                            <Label Text="{Binding Endereco}" FontSize="14"/>
-                            <Label Text="{Binding Numero}" FontSize="14"/>
-                            <Label Text="{Binding ViaCruzamento}" FontSize="14"/>
+                        <Frame 
+                            BackgroundColor="Transparent" HeightRequest="{OnPlatform Android=190, iOS=220}" Padding="0" HasShadow="false" CornerRadius="10">
+                            <StackLayout Padding="10">
+                            <Image Source="streeteye.svg"/>
+                            <Label Text="{Binding Descricao}" FontSize="18" FontAttributes="Bold" TextColor="Black"/>
+                            <Label Text="{Binding Endereco}" FontSize="14" TextColor="Black"/>
+                            <Label Text="{Binding Numero}" FontSize="14" TextColor="Black"/>
+                            <Label Text="{Binding ViaCruzamento}" FontSize="14" TextColor="Black"/>
                         </StackLayout>
+                        </Frame>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
