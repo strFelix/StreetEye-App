@@ -6,10 +6,23 @@
              BackgroundColor="WhiteSmoke">
 
     <ScrollView>
-        <VerticalStackLayout>
-            <Label Text="Cor do farol: " TextColor="Black" />
-            <Label Text="{Binding TrafficLightColor}" TextColor="Black"/>
-        </VerticalStackLayout>
+        <Frame BackgroundColor="Transparent" HeightRequest="{OnPlatform Android=190}" Padding="0" HasShadow="false" CornerRadius="10">
+
+            <HorizontalStackLayout Padding="10">
+                <Image Source="streeteye.png" WidthRequest="100" VerticalOptions="Start" />
+                <VerticalStackLayout>
+                    <Label Text="Principal" FontSize="18" FontAttributes="Bold" TextColor="Black"/>
+                    <Label Text="Rua Alcantara" FontSize="14" TextColor="Black"/>
+                    <Label Text="13" FontSize="14" TextColor="Black"/>
+                    <Label Text="Gulherme Coatching" FontSize="14" TextColor="Black"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Label Text="Cor do farol: " TextColor="Black" />
+                    <Label Text="{Binding TrafficLightColor}" TextColor="Black"/>
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+
+        </Frame>
     </ScrollView>
 
 </ContentPage>
