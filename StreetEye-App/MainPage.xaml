@@ -2,29 +2,30 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StreetEye_App.MainPage"
-             Title="MainPage"
              Background="WhiteSmoke">
 
-    <VerticalStackLayout Spacing="30" HorizontalOptions="Center">
+    <VerticalStackLayout Spacing="30" Padding="20">
 
         <ListView x:Name="listView" HasUnevenRows="True" ItemsSource="{Binding Semaforos}" SelectedItem="{ Binding SemaforoSelecionado }">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <Frame 
-                            BackgroundColor="Transparent" HeightRequest="{OnPlatform Android=190, iOS=220}" Padding="0" HasShadow="false" CornerRadius="10">
-                            <StackLayout Padding="10">
-                            <Image Source="streeteye.svg"/>
-                            <Label Text="{Binding Descricao}" FontSize="18" FontAttributes="Bold" TextColor="Black"/>
-                            <Label Text="{Binding Endereco}" FontSize="14" TextColor="Black"/>
-                            <Label Text="{Binding Numero}" FontSize="14" TextColor="Black"/>
-                            <Label Text="{Binding ViaCruzamento}" FontSize="14" TextColor="Black"/>
-                        </StackLayout>
+                            BackgroundColor="Transparent" HeightRequest="{OnPlatform Android=190}" Padding="0" HasShadow="false" CornerRadius="10">
+                            <HorizontalStackLayout Padding="10">
+                                <Image Source="streeteye.png" WidthRequest="100" VerticalOptions="Start" />
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding Descricao}" FontSize="18" FontAttributes="Bold" TextColor="Black"/>
+                                    <Label Text="{Binding Endereco}" FontSize="14" TextColor="Black"/>
+                                    <Label Text="{Binding Numero}" FontSize="14" TextColor="Black"/>
+                                    <Label Text="{Binding ViaCruzamento}" FontSize="14" TextColor="Black"/>
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
                         </Frame>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
+        
     </VerticalStackLayout>
 </ContentPage>
