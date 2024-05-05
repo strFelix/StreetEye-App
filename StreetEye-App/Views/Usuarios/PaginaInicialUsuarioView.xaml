@@ -17,7 +17,7 @@
         <Button BackgroundColor="Black"
                TextColor="White"
                Padding="60,0,60,0"
-               Text="Cadastrar" FontAttributes="Bold"  
+               Text="Cadastrar" FontAttributes="Bold"
                Command="{Binding DirecionarCadastroViewCommand}"/>
 
         <Button BackgroundColor="White"

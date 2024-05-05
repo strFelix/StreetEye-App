@@ -4,10 +4,12 @@
              x:Class="StreetEye_App.Views.Semaforos.SemaforoView"
              Title="SemaforoView"
              BackgroundColor="WhiteSmoke">
+
     <ScrollView>
         <VerticalStackLayout>
             <Label Text="Cor do farol: " TextColor="Black" />
             <Label Text="{Binding TrafficLightColor}" TextColor="Black"/>
         </VerticalStackLayout>
     </ScrollView>
+
 </ContentPage>

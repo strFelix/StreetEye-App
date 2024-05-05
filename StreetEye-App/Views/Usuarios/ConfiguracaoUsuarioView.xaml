@@ -6,9 +6,59 @@
              BackgroundColor="White">
 
     <ScrollView>
-        <VerticalStackLayout>
-            <Label Text="Cor do farol: " TextColor="Black" />
-            <Label Text="{Binding LightColor}" TextColor="Black"/>
-        </VerticalStackLayout>
+        <StackLayout Spacing="10" Margin="15" HorizontalOptions="Center">
+
+            <Grid ColumnSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="210" />
+                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition Width="110" />
+                </Grid.ColumnDefinitions>
+
+
+                <Entry Grid.Column="0" Grid.Row="0" 
+                Placeholder="Nome:" TextColor="Black" 
+                Text="{Binding Nome}" Keyboard="Text"/>
+
+                <Entry Grid.Column="1" Grid.Row="0" 
+                Placeholder="DDD:" TextColor="Black" 
+                MaxLength="2" Keyboard="Numeric"/>
+
+                <Entry Grid.Column="2" Grid.Row="0" 
+                Placeholder="Telefone:" TextColor="Black" 
+                Text="{Binding Telefone}" Keyboard="Telephone" MaxLength="9"/>
+
+            </Grid>
+
+            <Grid Padding="0,0,0,20" RowSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Entry Grid.Row="0" Grid.Column="0" 
+               Placeholder="Email:" TextColor="Black" 
+               Text="{Binding Email}" Keyboard="Email"/>
+
+                <Entry Grid.Row="1" Grid.Column="1"  
+               Placeholder="Senha:" TextColor="Black" IsPassword="True"
+               Text="{Binding Password}"/>
+            </Grid>
+
+            <Button
+            BackgroundColor="Black"
+            Padding="60,0,60,0"
+            Text="Alterar" 
+            TextColor="White"
+            HorizontalOptions="Center" />
+        </StackLayout>
+
     </ScrollView>
+    
 </ContentPage>
