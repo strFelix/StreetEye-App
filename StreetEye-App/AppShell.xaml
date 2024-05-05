@@ -20,11 +20,6 @@
             ContentTemplate="{DataTemplate usuarios:ConfiguracaoUsuarioView}"
             Route="PaginaInicialUsuarioView"/>
 
-        <ShellContent
-            Title="Cadastro Responsavel" Icon="perfil.svg"
-            ContentTemplate="{DataTemplate responsaveis:CadastroResponsavelView}"
-            Route="PaginaInicialUsuarioView"/>
-
     </FlyoutItem>
 
 </Shell>
