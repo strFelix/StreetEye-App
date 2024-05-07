@@ -57,10 +57,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\email.svg" />
 	  <MauiImage Remove="Resources\Images\suricato.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\email.svg" />
 	  <None Remove="Resources\Images\suricato.png" />
 	  <None Remove="Resources\Images\suricato.svg" />
 	</ItemGroup>
