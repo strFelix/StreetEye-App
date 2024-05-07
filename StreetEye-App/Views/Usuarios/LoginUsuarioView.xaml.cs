@@ -12,14 +12,24 @@ public partial class LoginUsuarioView : ContentPage
         viewModel = new UsuarioViewModel();
         BindingContext = viewModel;
 
-        botaoLogin.Pressed += OnButtonPressed;
+        botaoLogin.Pressed += OnButtonLoginPressed;
+        botaoSenha.Pressed += OnButtonSenhaPressed;
     }
 
-    private async void OnButtonPressed(object sender, EventArgs e)
+    private async void OnButtonLoginPressed(object sender, EventArgs e)
     {
         // Animação de escala
         await botaoLogin.ScaleTo(0.9, 50, Easing.Linear);
         await Task.Delay(50);
         await botaoLogin.ScaleTo(1, 50, Easing.Linear);
+
+    }
+
+    private async void OnButtonSenhaPressed(object sender, EventArgs e)
+    {
+        // Animação de escala
+        await botaoSenha.ScaleTo(0.9, 50, Easing.Linear);
+        await Task.Delay(50);
+        await botaoSenha.ScaleTo(1, 50, Easing.Linear);
     }
 }

@@ -70,9 +70,10 @@
                         Command="{Binding LoginCommand}"
                         BackgroundColor="Black" />
 
-                <StackLayout Grid.Row="3" Orientation="Horizontal" HorizontalOptions="Center">
-                    <Label Text="Não sei minha senha" FontAttributes="Bold"></Label>
-                </StackLayout>
+                <Button Grid.Row="3" 
+                    x:Name="botaoSenha"
+                    FontSize="14" Text="Não sei minha senha" FontAttributes="Bold" TextColor="Black" 
+                    BackgroundColor="White" BorderWidth="1" BorderColor="Black"/>
             </Grid>
         </StackLayout>
 
