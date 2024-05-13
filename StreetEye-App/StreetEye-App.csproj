@@ -57,6 +57,25 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Views\Usuarios\CadastroUsuarioEnderecoView.xaml.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\email.svg" />
+	  <MauiImage Remove="Resources\Images\suricato.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Remove="Views\Usuarios\CadastroUsuarioEnderecoView.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Images\email.svg" />
+	  <None Remove="Resources\Images\suricato.png" />
+	  <None Remove="Resources\Images\suricato.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />

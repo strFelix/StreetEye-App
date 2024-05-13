@@ -28,4 +28,5 @@ public partial class CadastroUsuarioView : ContentPage
         dateEntry.CursorPosition = newText.Length;
         ((Entry)sender).Text = newText;
     }
+
 }
