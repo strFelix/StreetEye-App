@@ -14,6 +14,7 @@ public partial class LoginUsuarioView : ContentPage
 
         botaoLogin.Pressed += OnButtonLoginPressed;
         botaoSenha.Pressed += OnButtonSenhaPressed;
+        botaoCadastro.Pressed += OnButtonCadastroPressed;
     }
 
     private async void OnButtonLoginPressed(object sender, EventArgs e)
@@ -31,5 +32,13 @@ public partial class LoginUsuarioView : ContentPage
         await botaoSenha.ScaleTo(0.9, 50, Easing.Linear);
         await Task.Delay(50);
         await botaoSenha.ScaleTo(1, 50, Easing.Linear);
+    }
+
+    private async void OnButtonCadastroPressed(object sender, EventArgs e)
+    {
+        // Animação de escala
+        await botaoCadastro.ScaleTo(0.9, 50, Easing.Linear);
+        await Task.Delay(50);
+        await botaoCadastro.ScaleTo(1, 50, Easing.Linear);
     }
 }

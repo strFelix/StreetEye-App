@@ -32,7 +32,7 @@
                 <Image Grid.Column="1" Margin="15,15,10,10"  Source="crossolutions_semtexto.png" HeightRequest="40" VerticalOptions="Center"/>
             </Grid>
 
-            <Grid RowSpacing="20" Padding="10" Margin="0,100,0,0">
+            <Grid RowSpacing="20" Padding="10" Margin="0,80,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -65,15 +65,15 @@
                 </Grid>
 
                 <Button Grid.Row="2" 
-                        x:Name="botaoLogin"
-                        Text="Entrar" FontAttributes="Bold" TextColor="White" FontSize="15" 
-                        Command="{Binding LoginCommand}"
-                        BackgroundColor="Black" />
+                    x:Name="botaoLogin"
+                    Text="Entrar" FontAttributes="Bold" TextColor="White" FontSize="15" 
+                    Command="{Binding LoginCommand}"
+                    BackgroundColor="Black" />
 
                 <Button Grid.Row="3" 
                     x:Name="botaoSenha"
                     FontSize="14" Text="Não sei minha senha" FontAttributes="Bold" TextColor="Black" 
-                    BackgroundColor="White" BorderWidth="1" BorderColor="Black"/>
+                    BackgroundColor="White" BorderWidth="1" BorderColor="LightGrey"/>
             </Grid>
         </StackLayout>
 
@@ -84,11 +84,11 @@
         </StackLayout>
 
         <StackLayout Grid.Row="2" Orientation="Horizontal" Margin="20" HorizontalOptions="End" >
-            <Label Text="Cadastrar-se agora" VerticalOptions="Center" FontSize="14" FontAttributes="Bold" Margin="10,0,0,0"/>
-            <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding DirecionarCadastroViewCommand}">
-                </TapGestureRecognizer>
-            </StackLayout.GestureRecognizers>
+            <Button Grid.Row="3" 
+            x:Name="botaoCadastro"
+            FontSize="14" Text="Cadatrar-se agora" FontAttributes="Bold" TextColor="Black" 
+            BackgroundColor="White" BorderWidth="1" 
+            Command="{Binding DirecionarCadastroViewCommand}"/>
         </StackLayout>
 
         <!-- Rodapé -->
