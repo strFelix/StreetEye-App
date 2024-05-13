@@ -57,8 +57,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Views\Usuarios\CadastroUsuarioEnderecoView.xaml.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\email.svg" />
 	  <MauiImage Remove="Resources\Images\suricato.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Remove="Views\Usuarios\CadastroUsuarioEnderecoView.xaml" />
 	</ItemGroup>
 
 	<ItemGroup>
