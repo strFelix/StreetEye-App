@@ -2,27 +2,38 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StreetEye_App.Views.Semaforos.SemaforoView"
-             Title="SemaforoView"
              BackgroundColor="WhiteSmoke">
 
-    <ScrollView>
-        <Frame BackgroundColor="Transparent" HeightRequest="{OnPlatform Android=190}" Padding="0" HasShadow="false" CornerRadius="10">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="FrameOption" TargetType="Frame">
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="HasShadow" Value="True"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
-            <HorizontalStackLayout Spacing="30" Padding="20">
-                <Image Source="streeteye.png" WidthRequest="120" VerticalOptions="Start" />
-                <VerticalStackLayout>
-                    <Label Text="Principal" FontSize="18" FontAttributes="Bold" TextColor="Black"/>
-                    <Label Text="Rua Alcantara" FontSize="14" TextColor="Black"/>
-                    <Label Text="13" FontSize="14" TextColor="Black"/>
-                    <Label Text="Gulherme Coatching" FontSize="14" TextColor="Black"/>
-                </VerticalStackLayout>
-                <HorizontalStackLayout>
-                    <Label Text="Cor do farol: " TextColor="Black" />
+    <ContentPage.Content>
+        <VerticalStackLayout>
+            <Frame BackgroundColor="Transparent" HeightRequest="{OnPlatform Android=190}" Margin="15" Padding="0" HasShadow="false">
+                <HorizontalStackLayout Spacing="30" Padding="20" HorizontalOptions="Center">
+                    <Image Source="streeteye.png" WidthRequest="120" VerticalOptions="Start" />
+                    <VerticalStackLayout>
+                        <Label Text="Principal" FontSize="18" FontAttributes="Bold" TextColor="Black"/>
+                        <Label Text="Rua Alcantara" FontSize="14" TextColor="Black"/>
+                        <Label Text="13" FontSize="14" TextColor="Black"/>
+                        <Label Text="Gulherme Coatching" FontSize="14" TextColor="Black"/>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </Frame>
+
+            <Frame BackgroundColor="Transparent" HeightRequest="{OnPlatform Android=190}" Margin="15" Padding="0" HasShadow="false" CornerRadius="20">
+                <HorizontalStackLayout  Spacing="0" Padding="20" HorizontalOptions="Center">
                     <Label Text="{Binding TrafficLightColor}" TextColor="Black"/>
                 </HorizontalStackLayout>
-            </HorizontalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ContentPage.Content>
 
-        </Frame>
-    </ScrollView>
 
 </ContentPage>
