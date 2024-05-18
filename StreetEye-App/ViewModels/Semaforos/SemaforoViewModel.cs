@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace StreetEye_App.ViewModels.Semaforos
 {
@@ -37,11 +38,15 @@ namespace StreetEye_App.ViewModels.Semaforos
             get { return semaforoSelecionado; }
             set
             {
-                if (value != null)
+                if (value != null && value.Descricao.ToString() == "Online")
                 {
                     semaforoSelecionado = value;
                     Shell.Current.GoToAsync($"exibirSemaforoView?pId={semaforoSelecionado.Id}");
                 }
+                else
+                {
+                    Application.Current.MainPage.DisplayAlert("Aviso", "Semaforo selecionado está offline.", "Ok");
+                }   
             }
         }
 
