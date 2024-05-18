@@ -6,8 +6,28 @@
     xmlns:local="clr-namespace:StreetEye_App"
     xmlns:usuarios="clr-namespace:StreetEye_App.Views.Usuarios"
     xmlns:responsaveis="clr-namespace:StreetEye_App.Views.Responsaveis"
-    Shell.FlyoutBehavior="Disabled"
-    Title="StreetEye_App">
+    Title="StreetEye_App"
+    BackgroundColor="WhiteSmoke">
+
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="{OnPlatform Android=130, iOS=200}"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                </Grid.RowDefinitions>
+                <FlexLayout Grid.Row="0" Direction="Row" AlignItems="Center" >
+                    <Frame Padding="0" CornerRadius="40" HeightRequest="80" WidthRequest="80" >
+                        <Image/>
+                    </Frame>
+                    <VerticalStackLayout Padding="10,0,0,0" Spacing="0">
+                        <Label Text="StreetEye-App" FontAttributes="Bold" FontSize="Medium" TextColor="Black"/>
+                    </VerticalStackLayout>
+                </FlexLayout>
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
 
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent
@@ -22,4 +42,8 @@
 
     </FlyoutItem>
 
+    <Shell.FlyoutFooter>
+        <Label x:Name="lblLogin" TextColor="Black" FontAttributes="Bold" HorizontalOptions="Center" />
+    </Shell.FlyoutFooter>
+       
 </Shell>

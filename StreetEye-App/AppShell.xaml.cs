@@ -7,9 +7,13 @@ namespace StreetEye_App
     {
         public AppShell()
         {
+            InitializeComponent();
+
             Routing.RegisterRoute("cadResponsavelView", typeof(CadastroResponsavelView));
             Routing.RegisterRoute("exibirSemaforoView", typeof(SemaforoView));
-            InitializeComponent();
+
+            string login = Preferences.Get("UsuarioEmail", string.Empty);
+            lblLogin.Text = $"login: {login}";
         }
     }
 }

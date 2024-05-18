@@ -9,6 +9,7 @@ namespace StreetEye_App
             InitializeComponent();
 
             MainPage = new NavigationPage(new PaginaInicialUsuarioView());
+
         }
     }
 }
