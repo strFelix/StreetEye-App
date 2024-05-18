@@ -38,15 +38,16 @@ namespace StreetEye_App.ViewModels.Semaforos
             get { return semaforoSelecionado; }
             set
             {
-                if (value != null && value.Descricao.ToString() == "Online")
+                if (value != null)
                 {
                     semaforoSelecionado = value;
-                    Shell.Current.GoToAsync($"exibirSemaforoView?pId={semaforoSelecionado.Id}");
+                    if(value.Descricao.ToString() == "Online")
+                        Shell.Current.GoToAsync($"exibirSemaforoView?pId={semaforoSelecionado.Id}");
+                    else
+                    {
+                        Application.Current.MainPage.DisplayAlert("Aviso", "Semaforo selecionado está offline.", "Ok");
+                    }
                 }
-                else
-                {
-                    Application.Current.MainPage.DisplayAlert("Aviso", "Semaforo selecionado está offline.", "Ok");
-                }   
             }
         }
 
