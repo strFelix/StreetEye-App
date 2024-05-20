@@ -1,31 +1,48 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="StreetEye_App.MainPage"
-             Background="WhiteSmoke">
+             x:Class="StreetEye_App.MainPage">
 
     <VerticalStackLayout Spacing="30" Padding="20">
-
-        <ListView x:Name="listView" HasUnevenRows="True" ItemsSource="{Binding Semaforos}" SelectedItem="{ Binding SemaforoSelecionado }">
+        <ListView x:Name="listView" HasUnevenRows="True" ItemsSource="{Binding Semaforos}" SelectedItem="{Binding SemaforoSelecionado }">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Frame 
-                            BackgroundColor="Transparent" HeightRequest="{OnPlatform Android=190}" Padding="10" HasShadow="false" CornerRadius="10">
-                            <HorizontalStackLayout Padding="10">
-                                <Image Source="streeteye.png" WidthRequest="120" VerticalOptions="Start" />
-                                <VerticalStackLayout>
-                                    <Label Text="{Binding Descricao}" FontSize="26" FontAttributes="Bold" TextColor="Black"/>
-                                    <Label Text="{Binding Endereco}" FontSize="22" TextColor="Black"/>
-                                    <Label Text="{Binding Numero}" FontSize="22" TextColor="Black"/>
-                                    <Label Text="{Binding ViaCruzamento}" FontSize="20" TextColor="Black"/>
-                                </VerticalStackLayout>
-                            </HorizontalStackLayout>
-                        </Frame>
+                        <StackLayout Margin="0,5,0,5">
+                            <Frame HeightRequest="100">
+                                <Grid VerticalOptions="Center">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackLayout Grid.Column="0" VerticalOptions="Center" WidthRequest="110">
+                                        <Image Source="streeteye.png" ></Image>
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Column="1"  Grid.Row="0">
+                                        <StackLayout Orientation="Horizontal" Margin="0,10">
+                                            <Label Text="Status: " FontSize="20" TextColor="Black"/>
+                                            <Label  Text="{Binding Descricao}" TextColor="{Binding Descricao, Converter={StaticResource StatusToColorConverter}}" FontSize="20" FontAttributes="Bold" ></Label>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" Spacing="5" >
+                                            <Label Text="{Binding Endereco}" FontSize="16" TextColor="Black"/>
+                                            <Label Text="{Binding Numero}" FontSize="16" TextColor="Black"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Via: " FontSize="16" FontAttributes="Bold"></Label>
+                                            <Label Text="{Binding ViaCruzamento}" FontSize="16" TextColor="Black"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        
     </VerticalStackLayout>
 </ContentPage>

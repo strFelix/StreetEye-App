@@ -179,15 +179,11 @@ namespace StreetEye_App.ViewModels.Usuarios
 
                 if (!string.IsNullOrEmpty(usuarioAutenticado.Token))
                 {
-                    string menssagem = $"Bem vindo(a) {usuarioAutenticado.Utilizador.Nome}!";
 
                     Preferences.Set("UsuarioId", usuarioAutenticado.Id);
                     Preferences.Set("UsuarioUsername", usuarioAutenticado.Utilizador.Nome);
                     Preferences.Set("UsuarioIdUtilizador", usuarioAutenticado.Utilizador.Id);
                     Preferences.Set("UsuarioToken", usuarioAutenticado.Token);
-
-                    await Application.Current.MainPage
-                        .DisplayAlert("Informações", menssagem, "Ok");
 
                     Application.Current.MainPage = new AppShell();
 
