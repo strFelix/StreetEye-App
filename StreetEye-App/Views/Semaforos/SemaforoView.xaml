@@ -1,39 +1,53 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="StreetEye_App.Views.Semaforos.SemaforoView"
-             BackgroundColor="WhiteSmoke">
+             x:Class="StreetEye_App.Views.Semaforos.SemaforoView">
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style x:Key="FrameOption" TargetType="Frame">
-                <Setter Property="Margin" Value="10"/>
-                <Setter Property="HasShadow" Value="True"/>
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
+ 
 
-    <ContentPage.Content>
-        <VerticalStackLayout>
-            <Frame BackgroundColor="Transparent" HeightRequest="{OnPlatform Android=190}" Margin="15" Padding="0" HasShadow="false">
-                <HorizontalStackLayout Spacing="30" Padding="20" HorizontalOptions="Center">
-                    <Image Source="streeteye.png" WidthRequest="120" VerticalOptions="Start" />
-                    <VerticalStackLayout>
-                        <Label Text="Principal" FontSize="18" FontAttributes="Bold" TextColor="Black"/>
-                        <Label Text="Rua Alcantara" FontSize="14" TextColor="Black"/>
-                        <Label Text="13" FontSize="14" TextColor="Black"/>
-                        <Label Text="Gulherme Coatching" FontSize="14" TextColor="Black"/>
-                    </VerticalStackLayout>
-                </HorizontalStackLayout>
+    <VerticalStackLayout Spacing="30" Padding="20">
+        <StackLayout>
+            <StackLayout Margin="0,5">
+                <Frame HeightRequest="100">
+                    <Grid VerticalOptions="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Grid.Column="0" VerticalOptions="Center" WidthRequest="110">
+                            <Image Source="streeteye.png" ></Image>
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="1"  Grid.Row="0">
+                            <StackLayout Orientation="Horizontal" Margin="0,10">
+                                <Label Text="Status: " FontSize="20" TextColor="Black"/>
+                                <Label Text="Conectado" TextColor="#39EF61" FontSize="20" FontAttributes="Bold" ></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="5" >
+                                <Label  x:Name="lblEndereco" FontSize="16" TextColor="Black"/>
+                                <Label x:Name="lblNumero" FontSize="16" TextColor="Black"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Via: " FontSize="16" FontAttributes="Bold"></Label>
+                                <Label x:Name="lblViaCruzamento" FontSize="16" TextColor="Black"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+
+            <Frame HeightRequest="500" Margin="20" Padding="0" HasShadow="false" CornerRadius="20" BackgroundColor="{Binding TrafficLightColor, Converter={StaticResource StatusToColorConverter}}">
+                <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label Text="{Binding TrafficLightColor}" 
+                           TextColor="{Binding TrafficLightColor, Converter={StaticResource StatusTextColorConverter}}"
+                           FontSize="40" FontAttributes="Bold" VerticalOptions="Center"/>
+                </StackLayout>
             </Frame>
-
-            <Frame BackgroundColor="Transparent" HeightRequest="{OnPlatform Android=190}" Margin="15" Padding="0" HasShadow="false" CornerRadius="20">
-                <HorizontalStackLayout  Spacing="0" Padding="20" HorizontalOptions="Center">
-                    <Label Text="{Binding TrafficLightColor}" TextColor="Black"/>
-                </HorizontalStackLayout>
-            </Frame>
-        </VerticalStackLayout>
-    </ContentPage.Content>
-
-
+        
+        </StackLayout>
+    </VerticalStackLayout>
 </ContentPage>

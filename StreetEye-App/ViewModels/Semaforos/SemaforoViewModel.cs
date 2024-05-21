@@ -42,7 +42,12 @@ namespace StreetEye_App.ViewModels.Semaforos
                 {
                     semaforoSelecionado = value;
                     if(value.Descricao.ToString() == "Online")
+                    {
                         Shell.Current.GoToAsync($"exibirSemaforoView?pId={semaforoSelecionado.Id}");
+                        Preferences.Set("SemaforoEndereco", semaforoSelecionado.Endereco);
+                        Preferences.Set("SemaforoNumero", semaforoSelecionado.Numero);
+                        Preferences.Set("SemaforoViaCruzamento", semaforoSelecionado.ViaCruzamento);
+                    } 
                     else
                     {
                         Application.Current.MainPage.DisplayAlert("Aviso", "Semaforo selecionado está offline.", "Ok");

@@ -41,6 +41,14 @@ namespace StreetEye_App.ViewModels.Semaforos
 
         private void OnMessageReceived(object sender, string message)
         {
+            message = message.Trim('"');
+
+            if (message == "GREEN")
+                message = "Aberto";
+            else if (message == "RED")
+                message = "Fechado";
+
+
             TrafficLightColor = message;
             // Parse the received message and update the TrafficLightColor property
             //if (message.StartsWith("data:\""))
