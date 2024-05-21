@@ -16,6 +16,9 @@
                     <RowDefinition Height="{OnPlatform Android=130, iOS=200}"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <FlexLayout Grid.Row="0" Direction="Row" AlignItems="Center" >
                     <Frame Padding="0" CornerRadius="40" HeightRequest="80" WidthRequest="80" >

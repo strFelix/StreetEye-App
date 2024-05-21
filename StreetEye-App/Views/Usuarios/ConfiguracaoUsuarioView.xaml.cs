@@ -11,5 +11,8 @@ public partial class ConfiguracaoUsuarioView : ContentPage
 
         viewModel = new UsuarioViewModel();
         BindingContext = viewModel;
+
+        string login = Preferences.Get("UsuarioUsername", string.Empty);
+        lblLogin.Text = $"Nome: {login}";
     }
 }
