@@ -1,10 +1,18 @@
-﻿namespace StreetEye_App.Services.SseEvent
+﻿using StreetEye_App.Models;
+using System.Text.Json;
+
+namespace StreetEye_App.Services.SseEvent
 {
-    public sealed class SseEventService
+    public class TrafficLightEvent
+    {
+        public string color { get; set; }
+        public int timeLeft { get; set; }
+    }
+
+    public class SseEventService
     {
         private readonly HttpClient _httpClient;
-
-        public event EventHandler<string> MessageReceived;
+        public event EventHandler<TrafficLightEvent> MessageReceived;
 
         public SseEventService()
         {
@@ -45,12 +53,28 @@
                 {
                     eventData = line.Substring(5).Trim();
                 }
-                else if (line == ":") // Empty line signifies the end of an event
+                else if (line != ":") // Empty line signifies the end of an event
                 {
-                    if (eventName == "trafficLightCurrentColor" && !string.IsNullOrEmpty(eventData))
+                    if (eventName == "trafficLightUpdate" && !string.IsNullOrEmpty(eventData))
                     {
-                        // Invoke event handler with the data
-                        MessageReceived?.Invoke(this, eventData);
+                        try
+                        {
+                            //debug line
+                            Console.WriteLine($"Received event data: {eventData}");  // Log the raw JSON string
+                            var trafficLightEvent = JsonSerializer.Deserialize<TrafficLightEvent>(eventData);
+                            if (trafficLightEvent != null)
+                            {
+                                //debug line
+                                Console.WriteLine($"Deserialized event: Color={trafficLightEvent.color}, TimeLeft={trafficLightEvent.timeLeft}");
+                                MessageReceived?.Invoke(this, trafficLightEvent);
+                            }
+                        }
+                        catch (JsonException ex)
+                        {
+                            //debug line
+                            // Handle JSON parsing error
+                            Console.WriteLine($"Failed to parse event data: {ex.Message}");
+                        }
                     }
 
                     // Reset event name and data for the next event

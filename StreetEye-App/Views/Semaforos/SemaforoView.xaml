@@ -45,6 +45,7 @@
                     <Label Text="{Binding TrafficLightColor}" 
                            TextColor="{Binding TrafficLightColor, Converter={StaticResource StatusTextColorConverter}}"
                            FontSize="40" FontAttributes="Bold" VerticalOptions="Center"/>
+                    <Label Text="{Binding TrafficLightTimeLeft}" FontSize="40"></Label>
                 </StackLayout>
             </Frame>
         
