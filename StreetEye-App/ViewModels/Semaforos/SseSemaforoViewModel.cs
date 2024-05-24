@@ -2,6 +2,8 @@
 using System.Threading;
 using System.Windows.Input;
 using StreetEye_App.Services.SseEvent;
+using StreetEye_App.Models;
+using System.Text.Json;
 
 namespace StreetEye_App.ViewModels.Semaforos
 {
@@ -13,6 +15,9 @@ namespace StreetEye_App.ViewModels.Semaforos
 
         [ObservableProperty]
         private string _trafficLightColor;
+
+        [ObservableProperty]
+        private int _trafficLightTimeLeft;
 
         public SseSemaforoViewModel()
         {
@@ -39,20 +44,15 @@ namespace StreetEye_App.ViewModels.Semaforos
             }
         }
 
-        private void OnMessageReceived(object sender, string message)
+        private void OnMessageReceived(object sender, TrafficLightEvent e)
         {
-            TrafficLightColor = message;
-            // Parse the received message and update the TrafficLightColor property
-            //if (message.StartsWith("data:\""))
-            //{
-            //    var color = message.Substring(6, message.Length - 7); // Extract color from message
-            //    TrafficLightColor = color;
-            //}
+            TrafficLightColor = e.color == "GREEN" ? "Aberto" : e.color == "RED" ? "Fechado" : "Indefinido";
+            TrafficLightTimeLeft = e.timeLeft;
         }
-
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _cancellationTokenSource?.Cancel();
+            _sseEventService.MessageReceived -= OnMessageReceived;
         }
         #endregion
     }

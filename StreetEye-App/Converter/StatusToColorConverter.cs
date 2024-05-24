@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 
 namespace StreetEye_App.Converter
 {
@@ -13,12 +8,12 @@ namespace StreetEye_App.Converter
         {
             if (value is string status)
             {
-                if (status == "Online")
-                    return Color.FromArgb("#096101");
-                else if (status == "Offline")
-                    return Color.FromArgb("#c20202");
+                if (status == "Online" || status == "Aberto")
+                    return Color.FromArgb("#39EF61");
+                else if (status == "Offline" || status == "Fechado")
+                    return Color.FromArgb("#EF3939");
             }
-            return Color.FromArgb("#000000"); // cor padrão, se o valor não corresponder a nenhum dos casos acima
+            return Color.FromArgb("#FFFFFF"); // cor padrão, se o valor não corresponder a nenhum dos casos acima
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
