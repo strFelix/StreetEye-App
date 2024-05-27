@@ -183,6 +183,15 @@ namespace StreetEye_App.ViewModels.Usuarios
                     Preferences.Set("UsuarioId", usuarioAutenticado.Id);
                     Preferences.Set("UsuarioUsername", usuarioAutenticado.Utilizador.Nome);
                     Preferences.Set("UsuarioIdUtilizador", usuarioAutenticado.Utilizador.Id);
+                    Preferences.Set("UsuarioEmail", usuarioAutenticado.Email);
+                    Preferences.Set("UsuarioTelefone", usuarioAutenticado.Utilizador.Telefone);
+                    Preferences.Set("UsuarioCEP", usuarioAutenticado.Utilizador.CEP);
+                    Preferences.Set("UsuarioEndereco", usuarioAutenticado.Utilizador.Endereco);
+                    Preferences.Set("UsuarioNumeroEndereco", usuarioAutenticado.Utilizador.NumeroEndereco);
+                    Preferences.Set("UsuarioComplemento", usuarioAutenticado.Utilizador.Complemento);
+                    Preferences.Set("UsuarioBairro", usuarioAutenticado.Utilizador.Bairro);
+                    Preferences.Set("UsuarioCidade", usuarioAutenticado.Utilizador.Cidade);
+                    Preferences.Set("UsuarioUf", usuarioAutenticado.Utilizador.UF);
                     Preferences.Set("UsuarioToken", usuarioAutenticado.Token);
 
                     Application.Current.MainPage = new AppShell();

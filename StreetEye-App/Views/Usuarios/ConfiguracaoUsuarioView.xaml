@@ -11,13 +11,10 @@
                 <RowDefinition Height="{OnPlatform Android=130}"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="40"></RowDefinition>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             
             <FlexLayout Grid.Row="0" Direction="Column" AlignItems="Center" >
-                <Frame Padding="0" CornerRadius="40" HeightRequest="100" WidthRequest="100" >
+                <Frame Padding="0" CornerRadius="80" HeightRequest="160" WidthRequest="160">
                     <Image/>
                 </Frame>
                 <VerticalStackLayout Padding="10,0,0,0" Spacing="0">
@@ -25,24 +22,15 @@
                 </VerticalStackLayout>
             </FlexLayout>
 
-            <StackLayout Grid.Row="3" Orientation="Vertical" Padding="15" Spacing="15" Margin="0,30,0,0">
-                <Entry x:Name="lblNome"
-                       Placeholder="Nome:" TextColor="Black" 
-                       Text="{Binding Nome}" Keyboard="Text"/>
-
-                <Entry Grid.Row="4" Grid.Column="0" 
-                       Placeholder="Email:" TextColor="Black" 
-                       Text="{Binding Email}" Keyboard="Email"/>
-
-                <Entry Grid.Row="5" Grid.Column="1"  
-                       Placeholder="Senha:" TextColor="Black" IsPassword="True"
-                       Text="{Binding Password}"/>
-
-                <Entry Placeholder="Data de nascimento:" TextColor="Black"
-                       TextChanged="OnDateEntryTextChanged"
-                       Text="{Binding Data}" x:Name="dateEntry"
-                       Keyboard="Numeric"
-                       MaxLength="10" />
+            <StackLayout Padding="250">
+                <Label x:Name="lblEmail" HorizontalOptions="Center" Text="{Binding Email}"></Label> <!-- alteravel -->
+                <Label x:Name="lblTelefone" HorizontalOptions="Center" Text="{Binding Telefone}"></Label> <!-- alteravel -->
+                <Label x:Name="lblCep" HorizontalOptions="Center" Text="{Binding Cep}"></Label> <!-- alteravel -->
+                <Label x:Name="lblEndereco" HorizontalOptions="Center" Text="{Binding Endereco}"></Label>
+                <Label x:Name="lblNumeroEndereco" HorizontalOptions="Center" Text="{Binding NumeroEndereco}"></Label>
+                <Label x:Name="lblBairro" HorizontalOptions="Center" Text="{Binding Bairro}"></Label>
+                <Label x:Name="lblCidade" HorizontalOptions="Center" Text="{Binding Cidade}"></Label>
+                <Label x:Name="lblUf" HorizontalOptions="Center" Text="{Binding Uf}"></Label>
             </StackLayout>
 
         </Grid>
