@@ -39,8 +39,9 @@ namespace StreetEye_App.ViewModels.Semaforos
             }
             catch (Exception ex)
             {
+                await Application.Current.MainPage.Navigation.PopAsync();
                 await Application.Current.MainPage
-                      .DisplayAlert("Informação", ex.Message + "\n" + ex.InnerException, "Ok");
+                      .DisplayAlert("Informação", "Cuidado ao atravessar. O semaforo no momento está inacessível!", "Ok");
             }
         }
 
