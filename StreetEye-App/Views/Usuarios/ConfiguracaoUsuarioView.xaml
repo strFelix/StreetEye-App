@@ -33,6 +33,58 @@
                 <Label x:Name="lblUf" HorizontalOptions="Center" Text="{Binding Uf}"></Label>
             </StackLayout>
 
+            <StackLayout Grid.Row="3" Orientation="Vertical" Padding="15" Spacing="15" Margin="0,20,0,0">
+                <Grid ColumnSpacing="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" TextColor="Black" Text="{Binding Cep}"/>
+
+                    <Button Grid.Row="0" Grid.Column="1"
+                        Text="Buscar CEP" BackgroundColor="Black" TextColor="White" HorizontalOptions="Center"/>
+
+                </Grid>
+
+
+                <Grid ColumnSpacing="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" TextColor="Black" Text="{Binding Endereco}"/>
+
+                    <Label Grid.Row="0" Grid.Column="1" TextColor="Black" Text="{Binding NumeroEndereco}"/>
+
+                </Grid>
+
+                <Entry Placeholder="Bairro:" TextColor="Black" Text="{Binding Bairro}" IsEnabled="False"/>
+
+                <Grid ColumnSpacing="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="70" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="1" Grid.Column="0" TextColor="Black" Text="{Binding Cidade}"/>
+
+                    <Label Grid.Row="1" Grid.Column="1" TextColor="Black" Text="{Binding Uf}"/>
+                </Grid>
+            </StackLayout>
+
         </Grid>
             
     </ScrollView>
