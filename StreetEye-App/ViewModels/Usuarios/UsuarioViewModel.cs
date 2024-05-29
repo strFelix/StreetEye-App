@@ -74,7 +74,7 @@ namespace StreetEye_App.ViewModels.Usuarios
        
         public string Nome
         {
-            get => nome;
+            get => nome;    
             set
             {
                 nome = value;
@@ -175,6 +175,13 @@ namespace StreetEye_App.ViewModels.Usuarios
                 usuario.Email = Email;
                 usuario.Password = Password;
 
+                if(Email == null || Password == null) // Validação dos campos
+                {
+                    await Application.Current.MainPage
+                        .DisplayAlert("Informação:", "Email ou senha invalidos.", "Ok");
+                    return;
+                }
+
                 Usuario usuarioAutenticado = await _usuarioService.PostAutenticarUsuarioAsync(usuario);
 
                 if (!string.IsNullOrEmpty(usuarioAutenticado.Token))
@@ -205,6 +212,14 @@ namespace StreetEye_App.ViewModels.Usuarios
         {
             try
             {
+
+                if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(Nome) || string.IsNullOrEmpty(Data) || string.IsNullOrEmpty(Telefone) || string.IsNullOrEmpty(Cep) || string.IsNullOrEmpty(Endereco) || string.IsNullOrEmpty(NumeroEndereco) || string.IsNullOrEmpty(Bairro) || string.IsNullOrEmpty(Cidade) || string.IsNullOrEmpty(Uf))
+                {
+                    await Application.Current.MainPage
+                        .DisplayAlert("Informação:", "Todos os campos são obrigatórios.", "Ok");
+                    return;
+                }
+
                 Usuario usuario = new Usuario
                 {
                     Email = Email,
@@ -224,25 +239,44 @@ namespace StreetEye_App.ViewModels.Usuarios
                     }
                 };
 
+                // Validação dos campos
+                if (Telefone.Length < 9 || !Email.Contains("@") || !Email.Contains(".com") || Password.Length < 8 || NumeroEndereco == null) 
+                {
+                    string campo = string.Empty;
+
+                    if (Telefone.Length < 9)
+                        campo = "Telefone inserido é invalido.";
+                    else if (!Email.Contains("@") || !Email.Contains(".com"))
+                        campo = "Email inserido é invalido.";
+                    else if (Password.Length < 8)
+                        campo = "Senha deve conter no minimo 8 caracteres.";
+                    else if (NumeroEndereco == null)
+                        campo = "Número do endereço é obrigatório.";
+
+                    await Application.Current.MainPage
+                        .DisplayAlert("Informação:", campo, "Ok");
+                    return;
+                }   
+
                 Usuario usuarioRegistrado = await _usuarioService.PostRegistrarUsuarioAsync(usuario);
                 
                 if(usuarioRegistrado != null)
                 {
                     await Application.Current.MainPage
-                        .DisplayAlert("Informações", "Usuário registrado com sucesso!", "Ok");
+                        .DisplayAlert("Informação:", "Usuário registrado com sucesso!", "Ok");
 
                     await NavigateToLoginAsync();
                 }
                 else
                 {
                     await Application.Current.MainPage
-                        .DisplayAlert("Informações", "Erro ao registrar usuário.", "Ok");
+                        .DisplayAlert("Informação:", "Erro ao registrar usuário.", "Ok");
                 }
             }
             catch (Exception ex)
             {
                 await Application.Current.MainPage
-                        .DisplayAlert("Informação", ex.Message + "\n" + ex.InnerException, "Ok");
+                        .DisplayAlert("Informação:", ex.Message + "\n" + ex.InnerException, "Ok");
             }
         }
 
@@ -250,9 +284,16 @@ namespace StreetEye_App.ViewModels.Usuarios
         {
             try
             {
+                if (Cep.Length < 8 && Cep != null)
+                {
+                    await Application.Current.MainPage
+                        .DisplayAlert("Informação:", "CEP informado é inválido.", "Ok");
+                    return;
+                }
+
                 Endereco endereco = await _enderecoService.GetEnderecoByCepAsync(Cep);
 
-                if (endereco != null)
+                if (endereco.Logradouro != null)
                 {
                     Endereco = endereco.Logradouro;
                     Bairro = endereco.Bairro;
@@ -261,14 +302,18 @@ namespace StreetEye_App.ViewModels.Usuarios
                 }
                 else
                 {
+                    Endereco = string.Empty;
+                    Bairro = string.Empty;
+                    Cidade = string.Empty;
+                    Uf = string.Empty;
                     await Application.Current.MainPage
-                        .DisplayAlert("Informações", "CEP não encontrado.", "Ok");
+                        .DisplayAlert("Informação:", "CEP não encontrado.", "Ok");
                 }
             }
             catch (Exception ex)
             {
                 await Application.Current.MainPage
-                        .DisplayAlert("Informação", ex.Message + "\n" + ex.InnerException, "Ok");
+                        .DisplayAlert("Informação:", ex.Message + "\n" + ex.InnerException, "Ok");
             }
         }
 

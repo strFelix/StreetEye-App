@@ -30,6 +30,27 @@ public partial class CadastroUsuarioView : ContentPage
 
         dateEntry.CursorPosition = newText.Length;
         ((Entry)sender).Text = newText;
+
+        if (newText.Length == 10)
+        {
+            // Tenta converter a entrada em um objeto DateTime
+            if (DateTime.TryParseExact(e.NewTextValue, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
+            {
+                if (DateTime.ParseExact(e.NewTextValue, "dd/MM/yyyy", null) > DateTime.Now)
+                {
+                    Application.Current.MainPage.DisplayAlert("Informação:", "Data de nascimento inválida.", "OK");
+                    ((Entry)sender).Text = "";
+                    return;
+                }   
+                ((Entry)sender).Text = newText;
+            }
+            else
+            {
+                Application.Current.MainPage.DisplayAlert("Informação:", "Data de nascimento inválida.", "OK");
+                ((Entry)sender).Text = "";
+            }
+        }
+
     }
 
     private async void OnButtonBuscarCepPressed(object sender, EventArgs e)

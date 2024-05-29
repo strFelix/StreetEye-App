@@ -24,7 +24,7 @@
             <!--Nome/Data/Telefone-->
             <StackLayout Grid.Row="1" Orientation="Vertical" Padding="15" Spacing="15" Margin="0,30,0,0">
                 <Entry x:Name="lblNome"
-                    Placeholder="Nome:" TextColor="Black" 
+                    Placeholder="Nome completo:" TextColor="Black" 
                     Text="{Binding Nome}" Keyboard="Text"/>
 
                 <Entry Grid.Row="1" Grid.Column="0" 
