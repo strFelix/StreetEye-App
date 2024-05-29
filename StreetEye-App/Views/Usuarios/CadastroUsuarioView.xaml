@@ -81,6 +81,7 @@
                     Text="{Binding Cep}" MaxLength="8" Keyboard="Numeric"/>
 
                     <Button Grid.Row="0" Grid.Column="1"
+                    x:Name="btnBuscarCep"
                     Text="Buscar CEP" BackgroundColor="Black" TextColor="White" HorizontalOptions="Center" 
                     Command="{Binding GetEnderecoByCepCommand}"/>
 
@@ -135,13 +136,13 @@
                 </Grid>
             </StackLayout>
 
-            <Button Grid.Row="4" Margin="0,15"
+            <Button Grid.Row="4" Margin="15"
+                x:Name="btnCadastrar"
                 BackgroundColor="Black"
-                Padding="60,0,60,0"
+                FontAttributes="Bold"
                 Text="Cadastrar" 
                 TextColor="White"
-                Command="{Binding RegistrarCommand}"
-                HorizontalOptions="Center" />
+                Command="{Binding RegistrarCommand}" />
         </Grid>
     </ScrollView>
 </ContentPage>
