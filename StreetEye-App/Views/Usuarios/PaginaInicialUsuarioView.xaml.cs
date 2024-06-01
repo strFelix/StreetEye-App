@@ -12,14 +12,25 @@ public partial class PaginaInicialUsuarioView : ContentPage
         viewModel = new UsuarioViewModel();
         BindingContext = viewModel;
 
-        botaoLogin.Pressed += OnButtonPressed;
+        botaoLogin.Pressed += OnButtonLoginPressed;
+        botaoCadastro.Pressed += OnButtonCadastroPressed;
     }
 
-    private async void OnButtonPressed(object sender, EventArgs e)
+    private async void OnButtonLoginPressed(object sender, EventArgs e)
     {
         // Animação de escala
         await botaoLogin.ScaleTo(0.9, 50, Easing.Linear);
         await Task.Delay(50);
         await botaoLogin.ScaleTo(1, 50, Easing.Linear);
+
+    }
+
+    private async void OnButtonCadastroPressed(object sender, EventArgs e)
+    {
+        // Animação de escala
+        await botaoCadastro.ScaleTo(0.9, 50, Easing.Linear);
+        await Task.Delay(50);
+        await botaoCadastro.ScaleTo(1, 50, Easing.Linear);
+
     }
 }

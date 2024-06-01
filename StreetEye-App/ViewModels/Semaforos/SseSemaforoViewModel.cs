@@ -11,12 +11,11 @@ namespace StreetEye_App.ViewModels.Semaforos
     {
         private readonly SseEventService _sseEventService;
         private CancellationTokenSource _cancellationTokenSource;
-        private readonly string sseEndpoint = "http://localhost:3000/sse";
-
+        private readonly string sseEndpoint = "https://streeteye-traffic-light.azurewebsites.net/sse";
         [ObservableProperty]
         private string _trafficLightColor;
 
-        [ObservableProperty]
+        [ObservableProperty]    
         private int _trafficLightTimeLeft;
 
         public SseSemaforoViewModel()
