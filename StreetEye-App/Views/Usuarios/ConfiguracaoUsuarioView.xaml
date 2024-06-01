@@ -12,8 +12,8 @@
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="40"></RowDefinition>
             </Grid.RowDefinitions>
-            
-            <FlexLayout Grid.Row="0" Direction="Column" AlignItems="Center" >
+
+            <FlexLayout Grid.Row="0" Direction="Column" AlignItems="Center" Margin="30" >
                 <Frame Padding="0" CornerRadius="80" HeightRequest="160" WidthRequest="160">
                     <Image/>
                 </Frame>
@@ -22,69 +22,186 @@
                 </VerticalStackLayout>
             </FlexLayout>
 
-            <StackLayout Padding="250">
-                <Label x:Name="lblEmail" HorizontalOptions="Center" Text="{Binding Email}"></Label> <!-- alteravel -->
-                <Label x:Name="lblTelefone" HorizontalOptions="Center" Text="{Binding Telefone}"></Label> <!-- alteravel -->
-                <Label x:Name="lblCep" HorizontalOptions="Center" Text="{Binding Cep}"></Label> <!-- alteravel -->
-                <Label x:Name="lblEndereco" HorizontalOptions="Center" Text="{Binding Endereco}"></Label>
-                <Label x:Name="lblNumeroEndereco" HorizontalOptions="Center" Text="{Binding NumeroEndereco}"></Label>
-                <Label x:Name="lblBairro" HorizontalOptions="Center" Text="{Binding Bairro}"></Label>
-                <Label x:Name="lblCidade" HorizontalOptions="Center" Text="{Binding Cidade}"></Label>
-                <Label x:Name="lblUf" HorizontalOptions="Center" Text="{Binding Uf}"></Label>
+            <StackLayout Margin="250" Orientation="Vertical" Padding="15" Spacing="15">
+                <Grid RowSpacing="10" ColumnSpacing="10" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Frame BackgroundColor="Transparent"
+                           Padding="6"
+                           CornerRadius="8" 
+                           HasShadow="False"
+                           Grid.Row="0" Grid.Column="0"
+                           HorizontalOptions="FillAndExpand">
+                        <Label x:Name="lblEmail" HorizontalOptions="Start" TextColor="Black" 
+                            Text="{Binding Email}"/>
+                    </Frame>
+
+                    <Frame BackgroundColor="Transparent"
+                           Padding="6"
+                           CornerRadius="8" 
+                           HasShadow="False"
+                           Grid.Row="0" Grid.Column="1"
+                           HorizontalOptions="FillAndExpand">
+                        <Entry Placeholder="Novo email:" FontSize="14" TextColor="Black" 
+                           Text="{Binding Email}" Keyboard="Email"
+                           HorizontalOptions="FillAndExpand"/>
+                    </Frame>
+
+                    <Frame BackgroundColor="Transparent"
+                           Padding="6"
+                           CornerRadius="8" 
+                           HasShadow="False"
+                           Grid.Row="1" Grid.Column="0"
+                           HorizontalOptions="FillAndExpand">
+                        <Label x:Name="lblTelefone" HorizontalOptions="Start" TextColor="Black" 
+                            Text="{Binding Telefone}"/>
+                    </Frame>
+
+                    <Frame BackgroundColor="Transparent"
+                           Padding="6"
+                           CornerRadius="8" 
+                           HasShadow="False"
+                           Grid.Row="1" Grid.Column="1"
+                           HorizontalOptions="FillAndExpand">
+                        <Entry Placeholder="Novo telefone:" TextColor="Black" 
+                           Text="{Binding Telefone}" Keyboard="Telephone"
+                           HorizontalOptions="FillAndExpand"/>
+                    </Frame>
+
+                    <Frame BackgroundColor="Transparent"
+                           Padding="6"
+                           CornerRadius="8" 
+                           HasShadow="False"
+                           Grid.Row="2" Grid.Column="0"
+                           HorizontalOptions="FillAndExpand">
+                        <Label x:Name="lblEndereco" HorizontalOptions="Start" TextColor="Black" 
+                            Text="{Binding Endereco}"/>
+                    </Frame>
+
+                    <Frame BackgroundColor="Transparent"
+                           Padding="6"
+                           CornerRadius="8" 
+                           HasShadow="False"
+                           Grid.Row="2" Grid.Column="1"
+                           HorizontalOptions="FillAndExpand">
+                        <Label x:Name="lblNumeroEndereco" HorizontalOptions="Center" TextColor="Black" 
+                            Text="{Binding NumeroEndereco}"/>
+                    </Frame>
+
+                    <Frame BackgroundColor="Transparent"
+                           Padding="6"
+                           CornerRadius="8" 
+                           HasShadow="False"
+                           Grid.Row="3" Grid.Column="0"
+                           HorizontalOptions="FillAndExpand">
+                        <Label x:Name="lblBairro" HorizontalOptions="Start" TextColor="Black" 
+                               Text="{Binding Bairro}"/>
+                    </Frame>
+
+                    <Frame BackgroundColor="Transparent"
+                           Padding="6"
+                           CornerRadius="8" 
+                           HasShadow="False"
+                           Grid.Row="3" Grid.Column="1"
+                           HorizontalOptions="FillAndExpand">
+                        <Label x:Name="lblCidade" HorizontalOptions="Center" TextColor="Black" 
+                           Text="{Binding Cidade}"/>
+                    </Frame>
+
+                    <Frame BackgroundColor="Transparent"
+                           Padding="6"
+                           CornerRadius="8" 
+                           HasShadow="False"
+                           Grid.Row="4" Grid.Column="0"
+                           HorizontalOptions="FillAndExpand">
+                        <Label x:Name="lblCep" HorizontalOptions="Start" TextColor="Black" 
+                            Text="{Binding Cep}"/>
+                    </Frame>
+
+                </Grid>
+
+                <StackLayout Orientation="Vertical" Padding="15" Spacing="15">
+
+                    <Grid ColumnSpacing="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Entry Grid.Row="0" Grid.Column="1" Placeholder="Novo CEP:" TextColor="Black" 
+                            Text="{Binding Cep}" MaxLength="8" Keyboard="Numeric"/>
+
+                        <Button Grid.Row="0" Grid.Column="2"
+                                x:Name="btnBuscarCep"
+                                Text="Buscar CEP" BackgroundColor="Black" TextColor="White" HorizontalOptions="Center" 
+                                Command="{Binding GetEnderecoByCepCommand}"/>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Entry Grid.Row="0" Grid.Column="0" Placeholder="Endereço:" TextColor="Black" Keyboard="Text"
+                        Text="{Binding Endereco}" IsEnabled="False"/>
+
+                        <Entry Grid.Row="0" Grid.Column="1" Placeholder="Nº:" TextColor="Black" Keyboard="Numeric" 
+                        Text="{Binding NumeroEndereco}"/>
+
+                        <Entry Grid.Row="0" Grid.Column="2" Placeholder="Complemento:" TextColor="Black" 
+                        Text="{Binding Complemento}"/>
+
+                    </Grid>
+
+                    <Entry Placeholder="Bairro:" TextColor="Black" Text="{Binding Bairro}" IsEnabled="False"/>
+
+                    <Grid ColumnSpacing="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="70" />
+                        </Grid.ColumnDefinitions>
+
+                        <Entry Grid.Row="1" Grid.Column="0" Placeholder="Cidade:" TextColor="Black" 
+                            Text="{Binding Cidade}" IsEnabled="False"/>
+
+                        <Entry Grid.Row="1" Grid.Column="1"
+                               Placeholder="UF:" TextColor="Black" 
+                               Text="{Binding Uf}"
+                               MaxLength="2" IsEnabled="False"/>
+                    </Grid>
+                </StackLayout>
+
+                <Button Grid.Row="4" Margin="15"
+                        x:Name="btnAlterar"
+                        BackgroundColor="Black"
+                        FontAttributes="Bold"
+                        Text="Alterar" 
+                        TextColor="White"
+                        Command="{Binding AlterarCommand}" />
             </StackLayout>
-
-            <StackLayout Grid.Row="3" Orientation="Vertical" Padding="15" Spacing="15" Margin="0,20,0,0">
-                <Grid ColumnSpacing="10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-
-                    <Label Grid.Row="0" Grid.Column="0" TextColor="Black" Text="{Binding Cep}"/>
-
-                    <Button Grid.Row="0" Grid.Column="1"
-                        Text="Buscar CEP" BackgroundColor="Black" TextColor="White" HorizontalOptions="Center"/>
-
-                </Grid>
-
-
-                <Grid ColumnSpacing="10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="200" />
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-                    <Label Grid.Row="0" Grid.Column="0" TextColor="Black" Text="{Binding Endereco}"/>
-
-                    <Label Grid.Row="0" Grid.Column="1" TextColor="Black" Text="{Binding NumeroEndereco}"/>
-
-                </Grid>
-
-                <Entry Placeholder="Bairro:" TextColor="Black" Text="{Binding Bairro}" IsEnabled="False"/>
-
-                <Grid ColumnSpacing="10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="70" />
-                    </Grid.ColumnDefinitions>
-
-                    <Label Grid.Row="1" Grid.Column="0" TextColor="Black" Text="{Binding Cidade}"/>
-
-                    <Label Grid.Row="1" Grid.Column="1" TextColor="Black" Text="{Binding Uf}"/>
-                </Grid>
-            </StackLayout>
-
         </Grid>
             
     </ScrollView>
