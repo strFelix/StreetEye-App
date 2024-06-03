@@ -18,7 +18,25 @@ public partial class ConfiguracaoUsuarioView : ContentPage
         string email = Preferences.Get("UsuarioEmail", string.Empty);
         lblEmail.Text = $"{email}";
 
+        btnCadastrarResponsavel.Pressed += OnButtonCadastrarResponsavelPressed;
+        btnAlterarDados.Pressed += OnButtonAlterarDadosPressed;
     }
 
+    private async void OnButtonCadastrarResponsavelPressed(object sender, EventArgs e)
+    {
+        // Animação de escala
+        await btnCadastrarResponsavel.ScaleTo(0.9, 50, Easing.Linear);
+        await Task.Delay(50);
+        await btnCadastrarResponsavel.ScaleTo(1, 50, Easing.Linear);
 
+    }
+
+    private async void OnButtonAlterarDadosPressed(object sender, EventArgs e)
+    {
+        // Animação de escala
+        await btnAlterarDados.ScaleTo(0.9, 50, Easing.Linear);
+        await Task.Delay(50);
+        await btnAlterarDados.ScaleTo(1, 50, Easing.Linear);
+
+    }
 }
