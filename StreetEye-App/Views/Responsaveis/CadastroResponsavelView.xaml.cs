@@ -4,13 +4,15 @@ namespace StreetEye_App.Views.Responsaveis;
 
 public partial class CadastroResponsavelView : ContentPage
 {
+   
     ResponsavelViewModel viewModel;
 
     public CadastroResponsavelView()
     {
         InitializeComponent();
-        viewModel = new ResponsavelViewModel();
-        BindingContext = viewModel;
+
+       viewModel = new ResponsavelViewModel();
+       BindingContext = viewModel;
     }
 
     private void OnDateEntryTextChanged(object sender, TextChangedEventArgs e)
@@ -28,5 +30,27 @@ public partial class CadastroResponsavelView : ContentPage
 
         dateEntry.CursorPosition = newText.Length;
         ((Entry)sender).Text = newText;
+
+        if (newText.Length == 10)
+        {
+            // Tenta converter a entrada em um objeto DateTime
+            if (DateTime.TryParseExact(e.NewTextValue, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
+            {
+                if (DateTime.ParseExact(e.NewTextValue, "dd/MM/yyyy", null) > DateTime.Now)
+                {
+                    Application.Current.MainPage.DisplayAlert("Informação:", "Data de nascimento inválida.", "OK");
+                    ((Entry)sender).Text = "";
+                    return;
+                }
+                ((Entry)sender).Text = newText;
+            }
+            else
+            {
+                Application.Current.MainPage.DisplayAlert("Informação:", "Data de nascimento inválida.", "OK");
+                ((Entry)sender).Text = "";
+            }
+        }
+
     }
+
 }

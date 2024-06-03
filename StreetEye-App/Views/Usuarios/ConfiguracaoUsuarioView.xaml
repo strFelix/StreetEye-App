@@ -34,7 +34,7 @@
                 BackgroundColor="#CCCCCC"
                 TextColor="Black" 
                 HorizontalOptions="FillAndExpand" 
-                Command="{Binding DirecionarCadastroViewCommand}"/>
+                Command="{Binding DirecionarCadastroResponsavelViewCommand}"/>
 
                 <Button Text="Alterar dados" 
                 FontSize="16"

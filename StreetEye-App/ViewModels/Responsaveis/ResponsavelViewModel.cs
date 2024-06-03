@@ -7,6 +7,7 @@ namespace StreetEye_App.ViewModels.Responsaveis
     class ResponsavelViewModel : BaseViewModel
     {
         private readonly ResponsavelService _responsavelService;
+
         public ResponsavelViewModel()
         {
             string token = Preferences.Get("UsuarioToken", string.Empty);

@@ -1,6 +1,7 @@
 ﻿using StreetEye_App.Models;
 using StreetEye_App.Services.Enderecos;
 using StreetEye_App.Services.Usuarios;
+using StreetEye_App.Views.Responsaveis;
 using StreetEye_App.Views.Usuarios;
 using System.Windows.Input;
 
@@ -26,6 +27,7 @@ namespace StreetEye_App.ViewModels.Usuarios
             DirecionarLoginViewCommand = new Command(async () => await NavigateToLoginAsync());
             DirecionarCadastroViewCommand = new Command(async () => await NavigateToCadastroAsync());
             DirecionarAlterarDadosViewCommand = new Command(async () => await NavigateToAlterarDadosAsync());
+            DirecionarCadastroResponsavelViewCommand = new Command(async () => await NavigateToCadastroResponsavelAsync());
         }
 
         #region Commands
@@ -34,6 +36,7 @@ namespace StreetEye_App.ViewModels.Usuarios
         public ICommand GetEnderecoByCepCommand { get; set; }
         public ICommand DirecionarLoginViewCommand { get; set; }
         public ICommand DirecionarCadastroViewCommand { get; set; }
+        public ICommand DirecionarCadastroResponsavelViewCommand { get; set; }
         public ICommand DirecionarAlterarDadosViewCommand { get; set; }
 
         #endregion
@@ -338,6 +341,10 @@ namespace StreetEye_App.ViewModels.Usuarios
         public async Task NavigateToCadastroAsync()
         {
             await Application.Current.MainPage.Navigation.PushAsync(new CadastroUsuarioView());
+        }
+        public async Task NavigateToCadastroResponsavelAsync()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new CadastroResponsavelView());
         }
         public async Task NavigateToAlterarDadosAsync()
         {
