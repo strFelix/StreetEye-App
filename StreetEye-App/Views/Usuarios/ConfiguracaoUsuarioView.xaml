@@ -29,6 +29,7 @@
             <StackLayout Grid.Row="1" Padding="20" Spacing="20" VerticalOptions="FillAndExpand">
 
                 <Button Text="Cadastrar responsável" 
+                x:Name="btnCadastrarResponsavel"
                 FontSize="18"
                 BackgroundColor="#f5f6fa"
                 TextColor="Black"
@@ -38,6 +39,7 @@
                 Command="{Binding DirecionarCadastroViewCommand}"/>
 
                 <Button Text="Alterar dados" 
+                x:Name="btnAlterarDados"
                 FontSize="18"
                 BackgroundColor="#f5f6fa"
                 TextColor="Black" 
