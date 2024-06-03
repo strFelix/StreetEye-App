@@ -105,6 +105,9 @@
 	  <MauiXaml Update="Views\Semaforos\SemaforoView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Usuarios\AlterarDadosUsuarioView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Usuarios\CadastroUsuarioView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

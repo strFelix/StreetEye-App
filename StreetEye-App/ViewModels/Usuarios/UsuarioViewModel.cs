@@ -25,6 +25,7 @@ namespace StreetEye_App.ViewModels.Usuarios
             GetEnderecoByCepCommand = new Command(async () => await GetEnderecoByCepAsync());
             DirecionarLoginViewCommand = new Command(async () => await NavigateToLoginAsync());
             DirecionarCadastroViewCommand = new Command(async () => await NavigateToCadastroAsync());
+            DirecionarAlterarDadosViewCommand = new Command(async () => await NavigateToAlterarDadosAsync());
         }
 
         #region Commands
@@ -33,6 +34,7 @@ namespace StreetEye_App.ViewModels.Usuarios
         public ICommand GetEnderecoByCepCommand { get; set; }
         public ICommand DirecionarLoginViewCommand { get; set; }
         public ICommand DirecionarCadastroViewCommand { get; set; }
+        public ICommand DirecionarAlterarDadosViewCommand { get; set; }
 
         #endregion
 
@@ -336,6 +338,10 @@ namespace StreetEye_App.ViewModels.Usuarios
         public async Task NavigateToCadastroAsync()
         {
             await Application.Current.MainPage.Navigation.PushAsync(new CadastroUsuarioView());
+        }
+        public async Task NavigateToAlterarDadosAsync()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new AlterarDadosUsuarioView());
         }
         #endregion
     }
