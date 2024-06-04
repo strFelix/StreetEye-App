@@ -22,7 +22,7 @@ namespace StreetEye_App.ViewModels.Responsaveis
 
         #region Properties
         private string nome = string.Empty;
-        private DateTime data;
+        private string data = string.Empty;
         private string telefone = string.Empty;
         private string endereco = string.Empty;
         private string numeroEndereco = string.Empty;
@@ -41,7 +41,7 @@ namespace StreetEye_App.ViewModels.Responsaveis
                 OnPropertyChanged(nameof(Nome));
             }
         }
-        public DateTime Data
+        public string Data
         {
             get => data;
             set
