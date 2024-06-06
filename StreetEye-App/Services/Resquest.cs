@@ -50,7 +50,6 @@ namespace StreetEye_App.Services
             TResult result = await Task.Run(() => JsonConvert.DeserializeObject<TResult>(serialized));
             return result;
         }
-
         public async Task<int> PutAsync<TResult>(string uri, TResult data, string token)
         {
             HttpClient httpClient = new HttpClient();

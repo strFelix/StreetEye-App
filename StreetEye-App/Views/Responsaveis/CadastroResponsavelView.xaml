@@ -129,7 +129,7 @@
                 FontAttributes="Bold"
                 Text="Cadastrar" 
                 TextColor="White"
-                Command="{Binding RegistrarCommand}"/>
+                Command="{Binding RegistrarResponsavelCommand}"/>
         </Grid>
     </ScrollView>
 </ContentPage>

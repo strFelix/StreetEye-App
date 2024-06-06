@@ -57,6 +57,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Models\Responsavel.cs" />
 	  <Compile Remove="Views\Usuarios\CadastroUsuarioEnderecoView.xaml.cs" />
 	</ItemGroup>
 

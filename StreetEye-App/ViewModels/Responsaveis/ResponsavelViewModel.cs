@@ -148,17 +148,25 @@ namespace StreetEye_App.ViewModels.Responsaveis
                     UF = Uf,
                     CEP = Cep
                 };
-                await _responsavelService.PostRegistrarResponsavelAsync(utilizadorResponsavel);
 
-                if (utilizadorResponsavel != null)
-                {
-                    await Application.Current.MainPage
-                        .DisplayAlert("Sucesso", "Responsável cadastrado com sucesso", "Ok");
-                }
+                // verificar se o responsável já foi cadastrado
+                int id = Preferences.Get("UsuarioIdUtilizador", 0);
+                Utilizador ur = await _responsavelService.GetResponsavelByIdUtilizadorAsync(id);
+                if (ur.Nome != string.Empty)
+                    await Application.Current.MainPage.DisplayAlert("Informação:", "Usuário já possui um responsável cadastrado.", "Ok");
                 else
                 {
-                    await Application.Current.MainPage
-                        .DisplayAlert("Erro", "Erro ao cadastrar responsável", "Ok");
+                    // cadastrar responsável
+                    await _responsavelService.PostRegistrarResponsavelAsync(utilizadorResponsavel);
+
+                    // alerta de sucesso ou erro
+                    if (utilizadorResponsavel != null)
+                    {
+                        await Application.Current.MainPage.Navigation.PopAsync();
+                        await Application.Current.MainPage.DisplayAlert("Informação:", "Responsável cadastrado com sucesso.", "Ok");
+                   }
+                    else
+                        await Application.Current.MainPage.DisplayAlert("Erro", "Erro ao cadastrar responsável", "Ok");
                 }
             }
             catch (Exception ex)
