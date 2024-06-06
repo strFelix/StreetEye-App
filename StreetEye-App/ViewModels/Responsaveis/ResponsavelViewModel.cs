@@ -1,4 +1,5 @@
 ﻿using StreetEye_App.Models;
+using StreetEye_App.Services.Enderecos;
 using StreetEye_App.Services.Responsaveis;
 using System.Windows.Input;
 
@@ -7,11 +8,13 @@ namespace StreetEye_App.ViewModels.Responsaveis
     class ResponsavelViewModel : BaseViewModel
     {
         private readonly ResponsavelService _responsavelService;
+        private readonly EnderecoService _enderecoService;
 
         public ResponsavelViewModel()
         {
             string token = Preferences.Get("UsuarioToken", string.Empty);
             _responsavelService = new ResponsavelService(token);
+            _enderecoService = new EnderecoService();
             InicializarCommads();
         }
 
@@ -153,7 +156,10 @@ namespace StreetEye_App.ViewModels.Responsaveis
                 int id = Preferences.Get("UsuarioIdUtilizador", 0);
                 Utilizador ur = await _responsavelService.GetResponsavelByIdUtilizadorAsync(id);
                 if (ur.Nome != string.Empty)
+                { 
+                    Application.Current.MainPage.Navigation.PopAsync();
                     await Application.Current.MainPage.DisplayAlert("Informação:", "Usuário já possui um responsável cadastrado.", "Ok");
+                }
                 else
                 {
                     // cadastrar responsável
@@ -164,7 +170,7 @@ namespace StreetEye_App.ViewModels.Responsaveis
                     {
                         await Application.Current.MainPage.Navigation.PopAsync();
                         await Application.Current.MainPage.DisplayAlert("Informação:", "Responsável cadastrado com sucesso.", "Ok");
-                   }
+                    }
                     else
                         await Application.Current.MainPage.DisplayAlert("Erro", "Erro ao cadastrar responsável", "Ok");
                 }
@@ -173,6 +179,43 @@ namespace StreetEye_App.ViewModels.Responsaveis
             {
                 await Application.Current.MainPage
                         .DisplayAlert("Erro", ex.Message + "\n" + ex.InnerException, "Ok");
+            }
+        }
+
+        public async Task GetEnderecoByCepAsync(string cep)
+        {
+            try
+            {
+                if (cep.Length < 8 && Cep != null)
+                {
+                    await Application.Current.MainPage
+                        .DisplayAlert("Informação:", "CEP informado é inválido.", "Ok");
+                    return;
+                }
+
+                Endereco endereco = await _enderecoService.GetEnderecoByCepAsync(Cep);
+
+                if (endereco.Logradouro != null)
+                {
+                    Endereco = endereco.Logradouro;
+                    Bairro = endereco.Bairro;
+                    Cidade = endereco.Localidade;
+                    Uf = endereco.Uf;
+                }
+                else
+                {
+                    Endereco = string.Empty;
+                    Bairro = string.Empty;
+                    Cidade = string.Empty;
+                    Uf = string.Empty;
+                    await Application.Current.MainPage
+                        .DisplayAlert("Informação:", "CEP não encontrado.", "Ok");
+                }
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage
+                        .DisplayAlert("Informação:", ex.Message + "\n" + ex.InnerException, "Ok");
             }
         }
         #endregion

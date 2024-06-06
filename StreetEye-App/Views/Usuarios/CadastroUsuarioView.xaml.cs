@@ -12,7 +12,8 @@ public partial class CadastroUsuarioView : ContentPage
         viewModel = new UsuarioViewModel();
         BindingContext = viewModel;
 
-        btnBuscarCep.Pressed += OnButtonBuscarCepPressed;
+        lblCep.TextChanged += OnCepCompleted;
+
         btnCadastrar.Pressed += OnButtonCadastrarPressed;
     }
     private void OnDateEntryTextChanged(object sender, TextChangedEventArgs e)
@@ -53,13 +54,13 @@ public partial class CadastroUsuarioView : ContentPage
 
     }
 
-    private async void OnButtonBuscarCepPressed(object sender, EventArgs e)
+    private void OnCepCompleted(object sender, EventArgs e)
     {
-        // Animação de escala
-        await btnBuscarCep.ScaleTo(0.9, 50, Easing.Linear);
-        await Task.Delay(50);
-        await btnBuscarCep.ScaleTo(1, 50, Easing.Linear);
-
+        if (lblCep.Text.Length == 8)
+        {
+            string cep = lblCep.Text;
+            viewModel.GetEnderecoByCepAsync(cep);
+        }
     }
 
     private async void OnButtonCadastrarPressed(object sender, EventArgs e)

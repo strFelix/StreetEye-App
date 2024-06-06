@@ -64,17 +64,12 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
                     <Entry Grid.Row="0" Grid.Column="0" 
                         Placeholder="CEP:" TextColor="Black" 
+                        x:Name="lblCep"
                         Text="{Binding Cep}" MaxLength="8" Keyboard="Numeric"/>
-
-                    <Button Grid.Row="0" Grid.Column="1"
-                        x:Name="btnBuscarCep"
-                        Text="Buscar CEP" BackgroundColor="Black" TextColor="White" HorizontalOptions="Center" 
-                        Command="{Binding GetEnderecoByCepCommand}"/>
                 </Grid>
 
                 <Grid ColumnSpacing="10">

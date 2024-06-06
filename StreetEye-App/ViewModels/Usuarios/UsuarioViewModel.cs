@@ -23,7 +23,6 @@ namespace StreetEye_App.ViewModels.Usuarios
         {
             LoginCommand = new Command(async () => await AutenticarUsuarioAsync());
             RegistrarCommand = new Command(async () => await RegistrarUsuarioAsync());
-            GetEnderecoByCepCommand = new Command(async () => await GetEnderecoByCepAsync());
             DirecionarLoginViewCommand = new Command(async () => await NavigateToLoginAsync());
             DirecionarCadastroViewCommand = new Command(async () => await NavigateToCadastroAsync());
             DirecionarAlterarDadosViewCommand = new Command(async () => await NavigateToAlterarDadosAsync());
@@ -33,7 +32,6 @@ namespace StreetEye_App.ViewModels.Usuarios
         #region Commands
         public ICommand LoginCommand { get; set; }
         public ICommand RegistrarCommand { get; set; }
-        public ICommand GetEnderecoByCepCommand { get; set; }
         public ICommand DirecionarLoginViewCommand { get; set; }
         public ICommand DirecionarCadastroViewCommand { get; set; }
         public ICommand DirecionarCadastroResponsavelViewCommand { get; set; }
@@ -294,11 +292,11 @@ namespace StreetEye_App.ViewModels.Usuarios
             }
         }
 
-        public async Task GetEnderecoByCepAsync()
+        public async Task GetEnderecoByCepAsync(string cep)
         {
             try
             {
-                if (Cep.Length < 8 && Cep != null)
+                if (cep.Length < 8 && Cep != null)
                 {
                     await Application.Current.MainPage
                         .DisplayAlert("Informação:", "CEP informado é inválido.", "Ok");

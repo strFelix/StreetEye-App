@@ -72,19 +72,13 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />  
                     </Grid.ColumnDefinitions>
 
                     <Entry Grid.Row="0" Grid.Column="0" 
+                    x:Name="lblCep"
                     Placeholder="CEP:" TextColor="Black" 
                     Text="{Binding Cep}" MaxLength="8" Keyboard="Numeric"/>
-
-                    <Button Grid.Row="0" Grid.Column="1"
-                    x:Name="btnBuscarCep"
-                    Text="Buscar CEP" BackgroundColor="Black" TextColor="White" HorizontalOptions="Center" 
-                    Command="{Binding GetEnderecoByCepCommand}"/>
-
                 </Grid>
 
 
