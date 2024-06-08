@@ -1,15 +1,17 @@
+using StreetEye_App.Services.Utilizadores;
 using StreetEye_App.ViewModels.Usuarios;
+using StreetEye_App.ViewModels.Utilizadores;
 
 namespace StreetEye_App.Views.Usuarios;
 
 public partial class AlterarDadosUsuarioView : ContentPage
 {
-    UsuarioViewModel viewModel;
+    UtilizadoresViewModel viewModel;
     public AlterarDadosUsuarioView()
 	{
 		InitializeComponent();
 
-		viewModel = new UsuarioViewModel();
+		viewModel = new UtilizadoresViewModel();
 		BindingContext = viewModel;
         lblCep.TextChanged += OnCepCompleted;
         btnSalvar.Pressed += OnButtonSalvarPressed;
