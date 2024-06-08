@@ -20,6 +20,7 @@ public partial class ConfiguracaoUsuarioView : ContentPage
 
         btnCadastrarResponsavel.Pressed += OnButtonCadastrarResponsavelPressed;
         btnAlterarDados.Pressed += OnButtonAlterarDadosPressed;
+        openLinkButton.Clicked += OpenLinkButton_Clicked;
     }
 
     private async void OnButtonCadastrarResponsavelPressed(object sender, EventArgs e)
@@ -38,5 +39,10 @@ public partial class ConfiguracaoUsuarioView : ContentPage
         await Task.Delay(50);
         await btnAlterarDados.ScaleTo(1, 50, Easing.Linear);
 
+    }
+
+    private async void OpenLinkButton_Clicked(object sender, EventArgs e)
+    {
+        await Launcher.OpenAsync(new Uri("https://strfelix.github.io/Crossolutions-Website/"));
     }
 }

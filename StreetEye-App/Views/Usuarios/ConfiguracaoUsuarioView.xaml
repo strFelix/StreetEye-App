@@ -54,11 +54,7 @@
             <StackLayout Grid.Row="2" VerticalOptions="Center" Orientation="Horizontal" HorizontalOptions="Center" Spacing="5" Margin="0,10">
 
                 <Image Source="globo.svg" HeightRequest="16"></Image>
-                <Label  
-                   Text="Nosso site" 
-                   FontSize="14"  
-                   HorizontalOptions="Center" 
-                   HorizontalTextAlignment="Center" />    
+                <Button Text="Nosso site" x:Name="openLinkButton" Background="Transparent" TextColor="Gray"></Button>    
             </StackLayout>
             
         </Grid>
