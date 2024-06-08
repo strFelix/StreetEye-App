@@ -328,7 +328,6 @@ namespace StreetEye_App.ViewModels.Usuarios
                         .DisplayAlert("Informação:", ex.Message + "\n" + ex.InnerException, "Ok");
             }
         }
-
         #endregion
 
         #region Navigation
