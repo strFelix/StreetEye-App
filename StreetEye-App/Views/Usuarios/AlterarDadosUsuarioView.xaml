@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="StreetEye_App.Views.Usuarios.AlterarDadosUsuarioView"
-             Title="AlterarDadosUsuarioView">
+             x:Class="StreetEye_App.Views.Usuarios.AlterarDadosUsuarioView">
     <ScrollView>
         <StackLayout Padding="20" Spacing="20">
 
@@ -14,8 +13,8 @@
                FontSize="14" 
                HorizontalOptions="Center" />
 
-            <Entry Placeholder="Nome" Text="{Binding Nome}" />
-            <Entry Placeholder="Telefone" Text="{Binding Telefone}" Keyboard="Telephone" />
+            <Entry Placeholder="Nome" Text="{Binding Nome}" x:Name="lblNome"/>
+            <Entry Placeholder="Telefone" Text="{Binding Telefone}" Keyboard="Telephone" x:Name="lblTelefone"/>
 
             <!-- CEP e Botao para buscar o CEP -->
             <Grid ColumnSpacing="10">
@@ -27,12 +26,9 @@
                    Placeholder="CEP" 
                    Text="{Binding Cep}" 
                    Keyboard="Numeric" 
-                   MaxLength="8"/>
-                <Button Grid.Column="1"
-                    Text="Buscar CEP" 
-                    BackgroundColor="Black" 
-                    TextColor="White" 
-                    Command="{Binding GetEnderecoByCepCommand}" />
+                   MaxLength="8"
+                   x:Name="lblCep"/>
+                
             </Grid>
 
             <!-- Endereço e Número -->
@@ -43,19 +39,21 @@
                 </Grid.ColumnDefinitions>
                 <Entry Grid.Column="0"
                    Placeholder="Endereço" 
-                   Text="{Binding Endereco}" 
+                   Text="{Binding Endereco}"
+                   x:Name="lblEndereco"
                    IsEnabled="False"/>
                 <Entry Grid.Column="1"
                    Placeholder="Nº" 
                    Text="{Binding NumeroEndereco}" 
+                   x:Name="lblNumeroEndereco"
                    Keyboard="Numeric" />
             </Grid>
 
             <!-- Complemento -->
-            <Entry Placeholder="Complemento" Text="{Binding Complemento}" />
+            <Entry Placeholder="Complemento" Text="{Binding Complemento}" x:Name="lblComplemento"/>
 
             <!-- Bairro -->
-            <Entry Placeholder="Bairro" Text="{Binding Bairro}" IsEnabled="False"/>
+            <Entry Placeholder="Bairro" Text="{Binding Bairro}" IsEnabled="False" x:Name="lblBairro"/>
 
             <!-- Cidade e UF -->
             <Grid ColumnSpacing="10">
@@ -65,11 +63,13 @@
                 </Grid.ColumnDefinitions>
                 <Entry Grid.Column="0"
                    Placeholder="Cidade" 
-                   Text="{Binding Cidade}" 
+                   Text="{Binding Cidade}"
+                   x:Name="lblCidade"
                    IsEnabled="False"/>
                 <Entry Grid.Column="1"
                    Placeholder="UF" 
                    Text="{Binding Uf}" 
+                   x:Name="lblUF"
                    MaxLength="2" 
                    IsEnabled="False"/>
             </Grid>
@@ -79,7 +79,8 @@
                 BackgroundColor="Black" 
                 TextColor="White" 
                 HorizontalOptions="FillAndExpand"
-                Command="{Binding AlterarDadosCommand}" />
+                x:Name="btnSalvar"
+                Command="{Binding UpdateUsuarioCommand}" />
         </StackLayout>
     </ScrollView>
 
