@@ -13,7 +13,7 @@ namespace StreetEye_App.Services.Utilizadores
 
         private const string apiUrlBase = "http://myprojects.somee.com/StreetEye/Utilizadores";
 
-        public UtilizadorService(string token)
+        public UtilizadorService()
         {
             _request = new Request();
         }

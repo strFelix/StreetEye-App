@@ -80,7 +80,7 @@
                 TextColor="White" 
                 HorizontalOptions="FillAndExpand"
                 x:Name="btnSalvar"
-                Command="{Binding UpdateUsuarioCommand}" />
+                Command="{Binding UpdateUtilizadorCommand}" />
         </StackLayout>
     </ScrollView>
 

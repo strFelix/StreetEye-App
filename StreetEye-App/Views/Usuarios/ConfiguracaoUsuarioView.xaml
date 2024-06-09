@@ -18,10 +18,10 @@
                     <Image/>
                 </Frame>
                 <VerticalStackLayout Padding="10,25,0,0">
-                    <Label x:Name="lblLogin" Text="{Binding login}" FontAttributes="Bold" FontSize="22" TextColor="Black"/>
+                    <Label x:Name="lblLogin" FontAttributes="Bold" FontSize="22" TextColor="Black"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout>
-                    <Label x:Name="lblEmail" Text="{Binding Email}" FontSize="Body" TextColor="Black"/>
+                    <Label x:Name="lblEmail" FontSize="Body" TextColor="Black"/>
                 </VerticalStackLayout>
             </FlexLayout>
 

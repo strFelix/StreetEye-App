@@ -1,10 +1,12 @@
 ﻿using StreetEye_App.Models;
 using StreetEye_App.Services.Enderecos;
+using StreetEye_App.Services.Utilizadores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace StreetEye_App.ViewModels.Utilizadores
 {
@@ -12,11 +14,18 @@ namespace StreetEye_App.ViewModels.Utilizadores
     {
 
         private readonly EnderecoService _enderecoService;
+        private readonly UtilizadorService _utilizadorService;
 
         public UtilizadoresViewModel()
         {
             _enderecoService = new EnderecoService();
+            _utilizadorService = new UtilizadorService();
+            UpdateUtilizadorCommand = new Command(async () => await UpdateUtilizadorAsync());
         }
+
+        #region Commands
+        public ICommand UpdateUtilizadorCommand { get; set; }
+        #endregion
 
         #region Properties
         //utilizador
@@ -116,6 +125,55 @@ namespace StreetEye_App.ViewModels.Utilizadores
         #endregion
 
         #region Methods
+
+        public async Task UpdateUtilizadorAsync()
+        {
+            try
+            {
+                Utilizador utilizador = new Utilizador
+                {
+                    Id = Preferences.Get("UsuarioIdUtilizador", 0),
+                    Nome = Nome,
+                    Telefone = Telefone,
+                    Endereco = Endereco,
+                    NumeroEndereco = NumeroEndereco,
+                    Complemento = Complemento,
+                    Bairro = Bairro,
+                    Cidade = Cidade,
+                    UF = Uf,
+                    CEP = Cep
+                };
+
+                int result = await _utilizadorService.PutUtilizadorAsync(utilizador);
+                if (result == 0)
+                {
+                    Preferences.Set("UsuarioUsername", utilizador.Nome);
+                    Preferences.Set("UsuarioTelefone", utilizador.Telefone);
+                    Preferences.Set("UsuarioCEP", utilizador.CEP);
+                    Preferences.Set("UsuarioEndereco", utilizador.Endereco);
+                    Preferences.Set("UsuarioNumeroEndereco", utilizador.NumeroEndereco);
+                    Preferences.Set("UsuarioComplemento", utilizador.Complemento);
+                    Preferences.Set("UsuarioBairro", utilizador.Bairro);
+                    Preferences.Set("UsuarioCidade", utilizador.Cidade);
+                    Preferences.Set("UsuarioUf", utilizador.UF);
+
+                    await Application.Current.MainPage.Navigation.PopAsync();
+                    await Application.Current.MainPage
+                        .DisplayAlert("Informação:", "Usuário atualizado com sucesso.", "Ok");
+                }
+                else
+                {
+                    await Application.Current.MainPage
+                        .DisplayAlert("Informação:", "Erro ao atualizar usuário.", "Ok");
+                }
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage
+                        .DisplayAlert("Informação:", ex.Message + "\n" + ex.InnerException, "Ok");
+            }
+        }
+
         public async Task GetEnderecoByCepAsync(string cep)
         {
             try

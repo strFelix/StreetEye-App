@@ -12,12 +12,6 @@ public partial class ConfiguracaoUsuarioView : ContentPage
         viewModel = new UsuarioViewModel();
         BindingContext = viewModel;
 
-        string login = Preferences.Get("UsuarioUsername", string.Empty);
-        lblLogin.Text = $"{login}";
-
-        string email = Preferences.Get("UsuarioEmail", string.Empty);
-        lblEmail.Text = $"{email}";
-
         btnCadastrarResponsavel.Pressed += OnButtonCadastrarResponsavelPressed;
         btnAlterarDados.Pressed += OnButtonAlterarDadosPressed;
         openLinkButton.Clicked += OpenLinkButton_Clicked;
@@ -45,4 +39,16 @@ public partial class ConfiguracaoUsuarioView : ContentPage
     {
         await Launcher.OpenAsync(new Uri("https://strfelix.github.io/Crossolutions-Website/"));
     }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        string login = Preferences.Get("UsuarioUsername", string.Empty);
+        lblLogin.Text = $"{login}";
+
+        string email = Preferences.Get("UsuarioEmail", string.Empty);
+        lblEmail.Text = $"{email}";
+    }
 }
+
+
