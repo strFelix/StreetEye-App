@@ -44,10 +44,11 @@ public partial class ConfiguracaoUsuarioView : ContentPage
     {
         base.OnAppearing();
         string login = Preferences.Get("UsuarioUsername", string.Empty);
-        lblLogin.Text = $"{login}";
+        lblLogin.Text = login;
+        lblEmail.Text = Preferences.Get("UsuarioEmail", string.Empty);
 
-        string email = Preferences.Get("UsuarioEmail", string.Empty);
-        lblEmail.Text = $"{email}";
+        char path = char.ToLower(login[0]);
+        imgPerfil.Source = ImageSource.FromFile($"{path}.png");
     }
 }
 

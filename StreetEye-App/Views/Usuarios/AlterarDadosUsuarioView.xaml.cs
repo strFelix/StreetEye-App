@@ -19,7 +19,7 @@ public partial class AlterarDadosUsuarioView : ContentPage
         //completando as labels com as info do usuario autenticado
         lblNome.Text = Preferences.Get("UsuarioUsername", "");
         lblTelefone.Text = Preferences.Get("UsuarioTelefone", "");
-        lblCep.Text = Preferences.Get("UsuarioCEP", "");
+        lblCep.Text = Preferences.Get("UsuarioCEP", "").Trim(); ;
         lblEndereco.Text = Preferences.Get("UsuarioEndereco", "");
         lblNumeroEndereco.Text = Preferences.Get("UsuarioNumeroEndereco", "");
         lblComplemento.Text = Preferences.Get("UsuarioComplemento", "");
