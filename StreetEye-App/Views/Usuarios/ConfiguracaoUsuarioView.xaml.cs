@@ -48,7 +48,7 @@ public partial class ConfiguracaoUsuarioView : ContentPage
         lblEmail.Text = Preferences.Get("UsuarioEmail", string.Empty);
 
         char path = char.ToLower(login[0]);
-        imgPerfil.Source = ImageSource.FromFile($"{path}.png");
+        imgPerfil.Source = ImageSource.FromFile($"perfil_{path}.png");
     }
 }
 
