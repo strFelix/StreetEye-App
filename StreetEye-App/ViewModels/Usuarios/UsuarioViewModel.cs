@@ -1,6 +1,7 @@
 ﻿using StreetEye_App.Models;
 using StreetEye_App.Services.Enderecos;
 using StreetEye_App.Services.Usuarios;
+using StreetEye_App.Views.Responsaveis;
 using StreetEye_App.Views.Usuarios;
 using System.Windows.Input;
 
@@ -22,17 +23,19 @@ namespace StreetEye_App.ViewModels.Usuarios
         {
             LoginCommand = new Command(async () => await AutenticarUsuarioAsync());
             RegistrarCommand = new Command(async () => await RegistrarUsuarioAsync());
-            GetEnderecoByCepCommand = new Command(async () => await GetEnderecoByCepAsync());
             DirecionarLoginViewCommand = new Command(async () => await NavigateToLoginAsync());
             DirecionarCadastroViewCommand = new Command(async () => await NavigateToCadastroAsync());
+            DirecionarAlterarDadosViewCommand = new Command(async () => await NavigateToAlterarDadosAsync());
+            DirecionarCadastroResponsavelViewCommand = new Command(async () => await NavigateToCadastroResponsavelAsync());
         }
 
         #region Commands
         public ICommand LoginCommand { get; set; }
         public ICommand RegistrarCommand { get; set; }
-        public ICommand GetEnderecoByCepCommand { get; set; }
         public ICommand DirecionarLoginViewCommand { get; set; }
         public ICommand DirecionarCadastroViewCommand { get; set; }
+        public ICommand DirecionarCadastroResponsavelViewCommand { get; set; }
+        public ICommand DirecionarAlterarDadosViewCommand { get; set; }
 
         #endregion
 
@@ -190,6 +193,15 @@ namespace StreetEye_App.ViewModels.Usuarios
                     Preferences.Set("UsuarioId", usuarioAutenticado.Id);
                     Preferences.Set("UsuarioUsername", usuarioAutenticado.Utilizador.Nome);
                     Preferences.Set("UsuarioIdUtilizador", usuarioAutenticado.Utilizador.Id);
+                    Preferences.Set("UsuarioEmail", usuarioAutenticado.Email);
+                    Preferences.Set("UsuarioTelefone", usuarioAutenticado.Utilizador.Telefone);
+                    Preferences.Set("UsuarioCEP", usuarioAutenticado.Utilizador.CEP);
+                    Preferences.Set("UsuarioEndereco", usuarioAutenticado.Utilizador.Endereco);
+                    Preferences.Set("UsuarioNumeroEndereco", usuarioAutenticado.Utilizador.NumeroEndereco);
+                    Preferences.Set("UsuarioComplemento", usuarioAutenticado.Utilizador.Complemento);
+                    Preferences.Set("UsuarioBairro", usuarioAutenticado.Utilizador.Bairro);
+                    Preferences.Set("UsuarioCidade", usuarioAutenticado.Utilizador.Cidade);
+                    Preferences.Set("UsuarioUf", usuarioAutenticado.Utilizador.UF);
                     Preferences.Set("UsuarioToken", usuarioAutenticado.Token);
 
                     Application.Current.MainPage = new AppShell();
@@ -280,11 +292,11 @@ namespace StreetEye_App.ViewModels.Usuarios
             }
         }
 
-        public async Task GetEnderecoByCepAsync()
+        public async Task GetEnderecoByCepAsync(string cep)
         {
             try
             {
-                if (Cep.Length < 8 && Cep != null)
+                if (cep.Length < 8 && Cep != null)
                 {
                     await Application.Current.MainPage
                         .DisplayAlert("Informação:", "CEP informado é inválido.", "Ok");
@@ -316,7 +328,6 @@ namespace StreetEye_App.ViewModels.Usuarios
                         .DisplayAlert("Informação:", ex.Message + "\n" + ex.InnerException, "Ok");
             }
         }
-
         #endregion
 
         #region Navigation
@@ -327,6 +338,14 @@ namespace StreetEye_App.ViewModels.Usuarios
         public async Task NavigateToCadastroAsync()
         {
             await Application.Current.MainPage.Navigation.PushAsync(new CadastroUsuarioView());
+        }
+        public async Task NavigateToCadastroResponsavelAsync()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new CadastroResponsavelView());
+        }
+        public async Task NavigateToAlterarDadosAsync()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new AlterarDadosUsuarioView());
         }
         #endregion
     }

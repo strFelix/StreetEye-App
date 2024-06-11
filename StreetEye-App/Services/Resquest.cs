@@ -50,7 +50,6 @@ namespace StreetEye_App.Services
             TResult result = await Task.Run(() => JsonConvert.DeserializeObject<TResult>(serialized));
             return result;
         }
-
         public async Task<int> PutAsync<TResult>(string uri, TResult data, string token)
         {
             HttpClient httpClient = new HttpClient();
@@ -59,8 +58,11 @@ namespace StreetEye_App.Services
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             HttpResponseMessage response = await httpClient.PutAsync(uri, content);
             string serialized = await response.Content.ReadAsStringAsync();
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                return int.Parse(serialized);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK || response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                if (!string.IsNullOrEmpty(serialized))
+                    return int.Parse(serialized);
+                else
+                    return 0;
             else
                 throw new Exception(serialized);
         }

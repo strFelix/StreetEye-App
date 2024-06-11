@@ -2,63 +2,62 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StreetEye_App.Views.Usuarios.ConfiguracaoUsuarioView"
-             Title="ConfiguracaoUsuarioView"
-             BackgroundColor="White">
+             NavigationPage.HasBackButton="True">
 
     <ScrollView>
-        <StackLayout Spacing="10" Margin="15" HorizontalOptions="Center">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
-            <Grid ColumnSpacing="10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="210" />
-                    <ColumnDefinition Width="60" />
-                    <ColumnDefinition Width="110" />
-                </Grid.ColumnDefinitions>
+            <!-- Header com imagem e informações do usuário -->
+            <FlexLayout Grid.Row="0" Direction="Column" AlignItems="Center" Margin="60">
+                <Frame Padding="0" CornerRadius="100" HeightRequest="170" WidthRequest="170">
+                    <Image x:Name="imgPerfil"   SemanticProperties.Description="Perfil de usuário: A imagem apresenta a primeira letra do nome, estilizada em fundo azul."/>
+                </Frame>
+                <VerticalStackLayout Padding="10,25,0,0">
+                    <Label x:Name="lblLogin" FontAttributes="Bold" FontSize="22" TextColor="Black"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Label x:Name="lblEmail" FontSize="Body" TextColor="Black"/>
+                </VerticalStackLayout>
+            </FlexLayout>
 
+            <!-- Botões -->
+            <StackLayout Grid.Row="1" Padding="20" Spacing="20" VerticalOptions="FillAndExpand">
 
-                <Entry Grid.Column="0" Grid.Row="0" 
-                Placeholder="Nome:" TextColor="Black" 
-                Text="{Binding Nome}" Keyboard="Text"/>
+                <Button Text="Cadastrar responsável" 
+                x:Name="btnCadastrarResponsavel"
+                FontSize="18"
+                BackgroundColor="#f5f6fa"
+                TextColor="Black"
+                BorderWidth="1"
+                BorderColor="#cccccc"
+                HorizontalOptions="FillAndExpand" 
+                Command="{Binding DirecionarCadastroResponsavelViewCommand}"/>
 
-                <Entry Grid.Column="1" Grid.Row="0" 
-                Placeholder="DDD:" TextColor="Black" 
-                MaxLength="2" Keyboard="Numeric"/>
+                <Button Text="Alterar dados" 
+                x:Name="btnAlterarDados"
+                FontSize="18"
+                BackgroundColor="#f5f6fa"
+                TextColor="Black" 
+                BorderWidth="1"
+                BorderColor="#cccccc"
+                HorizontalOptions="FillAndExpand" 
+                Command="{Binding DirecionarAlterarDadosViewCommand}"/>
 
-                <Entry Grid.Column="2" Grid.Row="0" 
-                Placeholder="Telefone:" TextColor="Black" 
-                Text="{Binding Telefone}" Keyboard="Telephone" MaxLength="9"/>
+            </StackLayout>
 
-            </Grid>
+            <!-- Footer -->
+            <StackLayout Grid.Row="2" VerticalOptions="Center" Orientation="Horizontal" HorizontalOptions="Center" Margin="0,10">
 
-            <Grid Padding="0,0,0,20" RowSpacing="10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-
-                <Entry Grid.Row="0" Grid.Column="0" 
-               Placeholder="Email:" TextColor="Black" 
-               Text="{Binding Email}" Keyboard="Email"/>
-
-                <Entry Grid.Row="1" Grid.Column="1"  
-               Placeholder="Senha:" TextColor="Black" IsPassword="True"
-               Text="{Binding Password}"/>
-            </Grid>
-
-            <Button
-            BackgroundColor="Black"
-            Padding="60,0,60,0"
-            Text="Alterar" 
-            TextColor="White"
-            HorizontalOptions="Center" />
-        </StackLayout>
-
+                <Image Source="globo.svg" HeightRequest="16"></Image >
+                <Button Text="Nosso site" x:Name="openLinkButton" Background="Transparent" TextColor="Black" SemanticProperties.Description="Imagem ilustrativa: A imagem apresenta um simbolo de globo, estilizado em linhas finas."></Button>    
+            </StackLayout>
+            
+        </Grid>
     </ScrollView>
-    
+
 </ContentPage>

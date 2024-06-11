@@ -21,5 +21,11 @@ namespace StreetEye_App.Services.Responsaveis
             utilizadorResponsavel = await _request.PostAsync(apiUrlBase, utilizadorResponsavel, _token);
             return utilizadorResponsavel;
         }
+
+        public async Task<Utilizador> GetResponsavelByIdUtilizadorAsync(int id)
+        {
+             Utilizador utilizadorResponsavel = await _request.GetAsync<Utilizador>(apiUrlBase + "/" + id, _token);
+             return utilizadorResponsavel;
+        }
     }
 }

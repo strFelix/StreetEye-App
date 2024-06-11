@@ -57,6 +57,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Models\Responsavel.cs" />
 	  <Compile Remove="Views\Usuarios\CadastroUsuarioEnderecoView.xaml.cs" />
 	</ItemGroup>
 
@@ -70,7 +71,40 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\a - Copy.png" />
+	  <None Remove="Resources\Images\A.png" />
+	  <None Remove="Resources\Images\b - Copy.png" />
+	  <None Remove="Resources\Images\B.png" />
+	  <None Remove="Resources\Images\c - Copy.png" />
+	  <None Remove="Resources\Images\C.png" />
+	  <None Remove="Resources\Images\d - Copy.png" />
+	  <None Remove="Resources\Images\D.png" />
+	  <None Remove="Resources\Images\e - Copy.png" />
+	  <None Remove="Resources\Images\E.png" />
 	  <None Remove="Resources\Images\email.svg" />
+	  <None Remove="Resources\Images\f - Copy.png" />
+	  <None Remove="Resources\Images\F.png" />
+	  <None Remove="Resources\Images\g - Copy.png" />
+	  <None Remove="Resources\Images\G.png" />
+	  <None Remove="Resources\Images\h - Copy.png" />
+	  <None Remove="Resources\Images\H.png" />
+	  <None Remove="Resources\Images\i - Copy.png" />
+	  <None Remove="Resources\Images\I.png" />
+	  <None Remove="Resources\Images\j - Copy.png" />
+	  <None Remove="Resources\Images\J.png" />
+	  <None Remove="Resources\Images\l - Copy.png" />
+	  <None Remove="Resources\Images\L.png" />
+	  <None Remove="Resources\Images\m - Copy.png" />
+	  <None Remove="Resources\Images\M.png" />
+	  <None Remove="Resources\Images\n - Copy.png" />
+	  <None Remove="Resources\Images\N.png" />
+	  <None Remove="Resources\Images\o - Copy.png" />
+	  <None Remove="Resources\Images\O.png" />
+	  <None Remove="Resources\Images\p - Copy.png" />
+	  <None Remove="Resources\Images\P.png" />
+	  <None Remove="Resources\Images\Q.png" />
+	  <None Remove="Resources\Images\R.png" />
+	  <None Remove="Resources\Images\S.png" />
 	  <None Remove="Resources\Images\suricato.png" />
 	  <None Remove="Resources\Images\suricato.svg" />
 	</ItemGroup>
@@ -103,6 +137,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Semaforos\SemaforoView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Usuarios\AlterarDadosUsuarioView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Usuarios\CadastroUsuarioView.xaml">

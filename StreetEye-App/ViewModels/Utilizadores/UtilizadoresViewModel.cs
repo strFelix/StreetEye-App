@@ -1,31 +1,35 @@
 ﻿using StreetEye_App.Models;
 using StreetEye_App.Services.Enderecos;
-using StreetEye_App.Services.Responsaveis;
+using StreetEye_App.Services.Utilizadores;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace StreetEye_App.ViewModels.Responsaveis
+namespace StreetEye_App.ViewModels.Utilizadores
 {
-    class ResponsavelViewModel : BaseViewModel
+    public class UtilizadoresViewModel : BaseViewModel
     {
-        private readonly ResponsavelService _responsavelService;
+
         private readonly EnderecoService _enderecoService;
+        private readonly UtilizadorService _utilizadorService;
 
-        public ResponsavelViewModel()
+        public UtilizadoresViewModel()
         {
-            string token = Preferences.Get("UsuarioToken", string.Empty);
-            _responsavelService = new ResponsavelService(token);
             _enderecoService = new EnderecoService();
-            InicializarCommads();
+            _utilizadorService = new UtilizadorService();
+            UpdateUtilizadorCommand = new Command(async () => await UpdateUtilizadorAsync());
         }
 
-        public void InicializarCommads()
-        {
-            RegistrarResponsavelCommand = new Command(async () => await RegistrarResponsavelAsync());
-        }
+        #region Commands
+        public ICommand UpdateUtilizadorCommand { get; set; }
+        #endregion
 
         #region Properties
+        //utilizador
         private string nome = string.Empty;
-        private string data = string.Empty;
         private string telefone = string.Empty;
         private string endereco = string.Empty;
         private string numeroEndereco = string.Empty;
@@ -42,15 +46,6 @@ namespace StreetEye_App.ViewModels.Responsaveis
             {
                 nome = value;
                 OnPropertyChanged(nameof(Nome));
-            }
-        }
-        public string Data
-        {
-            get => data;
-            set
-            {
-                data = value;
-                OnPropertyChanged(nameof(Data));
             }
         }
         public string Telefone
@@ -129,19 +124,16 @@ namespace StreetEye_App.ViewModels.Responsaveis
         }
         #endregion
 
-        #region Commands
-        public ICommand RegistrarResponsavelCommand { get; set; }
-        #endregion
-
         #region Methods
-        private async Task RegistrarResponsavelAsync()
+
+        public async Task UpdateUtilizadorAsync()
         {
             try
             {
-                Utilizador utilizadorResponsavel = new Utilizador
+                Utilizador utilizador = new Utilizador
                 {
+                    Id = Preferences.Get("UsuarioIdUtilizador", 0),
                     Nome = Nome,
-                    //DataNascimento = Data,
                     Telefone = Telefone,
                     Endereco = Endereco,
                     NumeroEndereco = NumeroEndereco,
@@ -152,33 +144,33 @@ namespace StreetEye_App.ViewModels.Responsaveis
                     CEP = Cep
                 };
 
-                // verificar se o responsável já foi cadastrado
-                int id = Preferences.Get("UsuarioIdUtilizador", 0);
-                Utilizador ur = await _responsavelService.GetResponsavelByIdUtilizadorAsync(id);
-                if (ur.Nome != string.Empty)
-                { 
-                    Application.Current.MainPage.Navigation.PopAsync();
-                    await Application.Current.MainPage.DisplayAlert("Informação:", "Usuário já possui um responsável cadastrado.", "Ok");
+                int result = await _utilizadorService.PutUtilizadorAsync(utilizador);
+                if (result == 0)
+                {
+                    Preferences.Set("UsuarioUsername", utilizador.Nome);
+                    Preferences.Set("UsuarioTelefone", utilizador.Telefone);
+                    Preferences.Set("UsuarioCEP", utilizador.CEP);
+                    Preferences.Set("UsuarioEndereco", utilizador.Endereco);
+                    Preferences.Set("UsuarioNumeroEndereco", utilizador.NumeroEndereco);
+                    Preferences.Set("UsuarioComplemento", utilizador.Complemento);
+                    Preferences.Set("UsuarioBairro", utilizador.Bairro);
+                    Preferences.Set("UsuarioCidade", utilizador.Cidade);
+                    Preferences.Set("UsuarioUf", utilizador.UF);
+
+                    await Application.Current.MainPage.Navigation.PopAsync();
+                    await Application.Current.MainPage
+                        .DisplayAlert("Informação:", "Usuário atualizado com sucesso.", "Ok");
                 }
                 else
                 {
-                    // cadastrar responsável
-                    await _responsavelService.PostRegistrarResponsavelAsync(utilizadorResponsavel);
-
-                    // alerta de sucesso ou erro
-                    if (utilizadorResponsavel != null)
-                    {
-                        await Application.Current.MainPage.Navigation.PopAsync();
-                        await Application.Current.MainPage.DisplayAlert("Informação:", "Responsável cadastrado com sucesso.", "Ok");
-                    }
-                    else
-                        await Application.Current.MainPage.DisplayAlert("Erro", "Erro ao cadastrar responsável", "Ok");
+                    await Application.Current.MainPage
+                        .DisplayAlert("Informação:", "Erro ao atualizar usuário.", "Ok");
                 }
             }
             catch (Exception ex)
             {
                 await Application.Current.MainPage
-                        .DisplayAlert("Erro", ex.Message + "\n" + ex.InnerException, "Ok");
+                        .DisplayAlert("Informação:", ex.Message + "\n" + ex.InnerException, "Ok");
             }
         }
 
