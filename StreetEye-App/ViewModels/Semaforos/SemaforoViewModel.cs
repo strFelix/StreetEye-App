@@ -1,5 +1,6 @@
 ﻿using StreetEye_App.Models;
 using StreetEye_App.Services.Semaforos;
+using StreetEye_App.Services.Usuarios;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,10 +14,15 @@ namespace StreetEye_App.ViewModels.Semaforos
     public class SemaforoViewModel : BaseViewModel
     {
         private readonly SemaforoService _semaforoService;
+        private readonly UsuarioService _usuarioService;
+        private string _token;
+
         public ObservableCollection<Semaforo> Semaforos { get; set; }
         public SemaforoViewModel( )
         {
+            _token = Preferences.Get("UsuarioToken", string.Empty);
             _semaforoService = new SemaforoService();
+            _usuarioService = new UsuarioService(_token);
             Semaforos = new ObservableCollection<Semaforo>();
             _ = ObterSemaforos();
         }
@@ -44,9 +50,10 @@ namespace StreetEye_App.ViewModels.Semaforos
                     if(value.Descricao.ToString() == "Online")
                     {
                         Shell.Current.GoToAsync($"exibirSemaforoView?pId={semaforoSelecionado.Id}");
-                        Preferences.Set("SemaforoEndereco", semaforoSelecionado.Endereco);
-                        Preferences.Set("SemaforoNumero", semaforoSelecionado.Numero);
-                        Preferences.Set("SemaforoViaCruzamento", semaforoSelecionado.ViaCruzamento);
+                        Preferences.Set("SemaforoId", semaforoSelecionado.Id);
+                        Preferences.Set("SemaforoLatitude", semaforoSelecionado.Latitude);
+                        Preferences.Set("SemaforoLongitude", semaforoSelecionado.Longitude);
+                        _ = PostHistoricoUsuarioAsync();
                     } 
                     else
                     {
@@ -74,6 +81,19 @@ namespace StreetEye_App.ViewModels.Semaforos
             {
                 Semaforos = await _semaforoService.GetSemaforosAsync();
                 OnPropertyChanged(nameof(Semaforos));
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage
+                        .DisplayAlert("Ops", ex.Message + " Detalhes: " + ex.InnerException, "Ok");
+            }
+        }
+
+        public async Task PostHistoricoUsuarioAsync()
+        {
+            try
+            {
+                await _usuarioService.PostUsuarioHistoricoAsync();
             }
             catch (Exception ex)
             {
