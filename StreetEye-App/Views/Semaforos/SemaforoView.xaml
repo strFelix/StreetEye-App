@@ -3,43 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StreetEye_App.Views.Semaforos.SemaforoView">
 
- 
-
     <VerticalStackLayout Spacing="30" Padding="20">
         <StackLayout>
-            <StackLayout Margin="0,5">
-                <Frame HeightRequest="100">
-                    <Grid VerticalOptions="Center">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-
-                        <StackLayout Grid.Column="0" VerticalOptions="Center" WidthRequest="110">
-                            <Image Source="streeteye.png" ></Image>
-                        </StackLayout>
-
-                        <StackLayout Grid.Column="1"  Grid.Row="0">
-                            <StackLayout Orientation="Horizontal" Margin="0,10">
-                                <Label Text="Status: " FontSize="20" TextColor="Black"/>
-                                <Label Text="Conectado" TextColor="#39EF61" FontSize="20" FontAttributes="Bold" ></Label>
-                            </StackLayout>
-                            <StackLayout Orientation="Horizontal" Spacing="5" >
-                                <Label  x:Name="lblEndereco" FontSize="16" TextColor="Black"/>
-                                <Label x:Name="lblNumero" FontSize="16" TextColor="Black"/>
-                            </StackLayout>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="Via: " FontSize="16" FontAttributes="Bold"></Label>
-                                <Label x:Name="lblViaCruzamento" FontSize="16" TextColor="Black"/>
-                            </StackLayout>
-                        </StackLayout>
-                    </Grid>
-                </Frame>
-            </StackLayout>
-
             <Frame HeightRequest="500" Margin="20" Padding="0" HasShadow="false" CornerRadius="20" BackgroundColor="{Binding TrafficLightColor, Converter={StaticResource StatusToColorConverter}}">
                 <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
                     <Label Text="{Binding TrafficLightColor}" 
