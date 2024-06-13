@@ -1,5 +1,3 @@
-using StreetEye_App.Services.Utilizadores;
-using StreetEye_App.ViewModels.Usuarios;
 using StreetEye_App.ViewModels.Utilizadores;
 
 namespace StreetEye_App.Views.Usuarios;
@@ -8,11 +6,11 @@ public partial class AlterarDadosUsuarioView : ContentPage
 {
     UtilizadoresViewModel viewModel;
     public AlterarDadosUsuarioView()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
 
-		viewModel = new UtilizadoresViewModel();
-		BindingContext = viewModel;
+        viewModel = new UtilizadoresViewModel();
+        BindingContext = viewModel;
         lblCep.TextChanged += OnCepCompleted;
         btnSalvar.Pressed += OnButtonSalvarPressed;
 
@@ -26,7 +24,7 @@ public partial class AlterarDadosUsuarioView : ContentPage
         lblBairro.Text = Preferences.Get("UsuarioBairro", "");
         lblCidade.Text = Preferences.Get("UsuarioCidade", "");
         lblUF.Text = Preferences.Get("UsuarioUf", "");
-        
+
 
     }
 

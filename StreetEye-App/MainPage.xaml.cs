@@ -1,5 +1,4 @@
 using StreetEye_App.ViewModels.Semaforos;
-using StreetEye_App.ViewModels.Usuarios;
 
 namespace StreetEye_App;
 

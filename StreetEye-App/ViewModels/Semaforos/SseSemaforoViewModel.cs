@@ -1,9 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System.Threading;
-using System.Windows.Input;
 using StreetEye_App.Services.SseEvent;
-using StreetEye_App.Models;
-using System.Text.Json;
 
 namespace StreetEye_App.ViewModels.Semaforos
 {
@@ -15,7 +11,7 @@ namespace StreetEye_App.ViewModels.Semaforos
         [ObservableProperty]
         private string _trafficLightColor;
 
-        [ObservableProperty]    
+        [ObservableProperty]
         private int _trafficLightTimeLeft;
 
         public SseSemaforoViewModel()
@@ -34,7 +30,7 @@ namespace StreetEye_App.ViewModels.Semaforos
             _cancellationTokenSource = new CancellationTokenSource();
             try
             {
-                await _sseEventService.StartListening(sseEndpoint, _cancellationTokenSource.Token);
+                await _sseEventService.StartListening(sseEndpoint);
             }
             catch (Exception ex)
             {

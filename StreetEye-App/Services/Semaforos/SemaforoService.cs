@@ -1,10 +1,5 @@
 ﻿using StreetEye_App.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StreetEye_App.Services.Semaforos
 {
@@ -24,6 +19,12 @@ namespace StreetEye_App.Services.Semaforos
             ObservableCollection<Models.Semaforo> listaSemaforos = await
                 _request.GetAsync<ObservableCollection<Models.Semaforo>>(apiUrlBase + urlComplementar, string.Empty);
             return listaSemaforos;
+        }
+
+        public async Task PostStatusSemaforoAsync(StatusSemaforo statusSemaforo)
+        {
+            string urlComplementar = "/historico";
+            await _request.PostHistoricoAsync(apiUrlBase + urlComplementar, statusSemaforo, string.Empty);
         }
 
     }
