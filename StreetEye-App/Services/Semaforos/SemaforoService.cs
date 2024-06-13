@@ -26,5 +26,11 @@ namespace StreetEye_App.Services.Semaforos
             return listaSemaforos;
         }
 
+        public async Task PostStatusSemaforoAsync(StatusSemaforo statusSemaforo)
+        {
+            string urlComplementar = "/historico";
+            await _request.PostHistoricoAsync(apiUrlBase + urlComplementar, statusSemaforo, string.Empty);
+        }
+
     }
 }

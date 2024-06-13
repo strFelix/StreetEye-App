@@ -34,7 +34,7 @@ namespace StreetEye_App.ViewModels.Semaforos
             _cancellationTokenSource = new CancellationTokenSource();
             try
             {
-                await _sseEventService.StartListening(sseEndpoint, _cancellationTokenSource.Token);
+                await _sseEventService.StartListening(sseEndpoint);
             }
             catch (Exception ex)
             {
