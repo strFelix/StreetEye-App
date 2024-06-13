@@ -4,19 +4,19 @@ namespace StreetEye_App.Views.Responsaveis;
 
 public partial class CadastroResponsavelView : ContentPage
 {
-   
+
     ResponsavelViewModel viewModel;
 
     public CadastroResponsavelView()
     {
         InitializeComponent();
 
-       viewModel = new ResponsavelViewModel();
-       BindingContext = viewModel;
+        viewModel = new ResponsavelViewModel();
+        BindingContext = viewModel;
 
-       btnCadastrar.Pressed += OnButtonCadastrarPressed;
+        btnCadastrar.Pressed += OnButtonCadastrarPressed;
 
-       lblCep.TextChanged += OnCepCompleted;
+        lblCep.TextChanged += OnCepCompleted;
     }
 
     private void OnDateEntryTextChanged(object sender, TextChangedEventArgs e)

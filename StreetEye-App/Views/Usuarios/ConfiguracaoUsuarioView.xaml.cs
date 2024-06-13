@@ -6,8 +6,8 @@ public partial class ConfiguracaoUsuarioView : ContentPage
 {
     UsuarioViewModel viewModel;
     public ConfiguracaoUsuarioView()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
 
         viewModel = new UsuarioViewModel();
         BindingContext = viewModel;

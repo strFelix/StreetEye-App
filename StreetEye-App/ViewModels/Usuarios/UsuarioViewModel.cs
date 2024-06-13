@@ -74,10 +74,10 @@ namespace StreetEye_App.ViewModels.Usuarios
                 OnPropertyChanged(nameof(Password));
             }
         }
-       
+
         public string Nome
         {
-            get => nome;    
+            get => nome;
             set
             {
                 nome = value;
@@ -178,7 +178,7 @@ namespace StreetEye_App.ViewModels.Usuarios
                 usuario.Email = Email;
                 usuario.Password = Password;
 
-                if(Email == null || Password == null) // Validação dos campos
+                if (Email == null || Password == null) // Validação dos campos
                 {
                     await Application.Current.MainPage
                         .DisplayAlert("Informação:", "Email ou senha invalidos.", "Ok");
@@ -219,7 +219,7 @@ namespace StreetEye_App.ViewModels.Usuarios
                         .DisplayAlert("Informação", ex.Message + "\n" + ex.InnerException, "Ok");
             }
         }
-        
+
         public async Task RegistrarUsuarioAsync()
         {
             try
@@ -252,7 +252,7 @@ namespace StreetEye_App.ViewModels.Usuarios
                 };
 
                 // Validação dos campos
-                if (Telefone.Length < 9 || !Email.Contains("@") || !Email.Contains(".com") || Password.Length < 8 || NumeroEndereco == null) 
+                if (Telefone.Length < 9 || !Email.Contains("@") || !Email.Contains(".com") || Password.Length < 8 || NumeroEndereco == null)
                 {
                     string campo = string.Empty;
 
@@ -268,11 +268,11 @@ namespace StreetEye_App.ViewModels.Usuarios
                     await Application.Current.MainPage
                         .DisplayAlert("Informação:", campo, "Ok");
                     return;
-                }   
+                }
 
                 Usuario usuarioRegistrado = await _usuarioService.PostRegistrarUsuarioAsync(usuario);
-                
-                if(usuarioRegistrado != null)
+
+                if (usuarioRegistrado != null)
                 {
                     await Application.Current.MainPage
                         .DisplayAlert("Informação:", "Usuário registrado com sucesso!", "Ok");

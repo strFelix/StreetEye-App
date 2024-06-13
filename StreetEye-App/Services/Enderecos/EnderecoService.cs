@@ -1,9 +1,4 @@
 ﻿using StreetEye_App.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StreetEye_App.Services.Enderecos
 {
@@ -23,6 +18,6 @@ namespace StreetEye_App.Services.Enderecos
             string uriComplementar = $"{cep}/json/";
             Endereco endereco = await _request.GetAsync<Endereco>(apiUrlBase + uriComplementar, string.Empty);
             return endereco;
-        }   
+        }
     }
 }

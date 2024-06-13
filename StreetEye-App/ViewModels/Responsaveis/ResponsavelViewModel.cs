@@ -156,7 +156,7 @@ namespace StreetEye_App.ViewModels.Responsaveis
                 int id = Preferences.Get("UsuarioIdUtilizador", 0);
                 Utilizador ur = await _responsavelService.GetResponsavelByIdUtilizadorAsync(id);
                 if (ur.Nome != string.Empty)
-                { 
+                {
                     Application.Current.MainPage.Navigation.PopAsync();
                     await Application.Current.MainPage.DisplayAlert("Informação:", "Usuário já possui um responsável cadastrado.", "Ok");
                 }

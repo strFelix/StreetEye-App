@@ -1,11 +1,6 @@
 ﻿using StreetEye_App.Models;
 using StreetEye_App.Services.Semaforos;
-using System;
-using System.IO;
-using System.Net.Http;
 using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace StreetEye_App.Services.SseEvent
 {

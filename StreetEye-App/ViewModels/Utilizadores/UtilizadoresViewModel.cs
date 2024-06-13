@@ -1,11 +1,6 @@
 ﻿using StreetEye_App.Models;
 using StreetEye_App.Services.Enderecos;
 using StreetEye_App.Services.Utilizadores;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace StreetEye_App.ViewModels.Utilizadores

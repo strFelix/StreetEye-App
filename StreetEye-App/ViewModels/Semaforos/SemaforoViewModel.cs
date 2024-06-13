@@ -1,13 +1,7 @@
 ﻿using StreetEye_App.Models;
 using StreetEye_App.Services.Semaforos;
 using StreetEye_App.Services.Usuarios;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace StreetEye_App.ViewModels.Semaforos
 {
@@ -18,7 +12,7 @@ namespace StreetEye_App.ViewModels.Semaforos
         private string _token;
 
         public ObservableCollection<Semaforo> Semaforos { get; set; }
-        public SemaforoViewModel( )
+        public SemaforoViewModel()
         {
             _token = Preferences.Get("UsuarioToken", string.Empty);
             _semaforoService = new SemaforoService();
@@ -34,7 +28,7 @@ namespace StreetEye_App.ViewModels.Semaforos
         private int intervaloFechado;
         private string endereco = string.Empty;
         private string numero = string.Empty;
-        private string viaCruzamento= string.Empty;
+        private string viaCruzamento = string.Empty;
         private string latitude = string.Empty;
         private string longitude = string.Empty;
 
@@ -47,14 +41,14 @@ namespace StreetEye_App.ViewModels.Semaforos
                 if (value != null)
                 {
                     semaforoSelecionado = value;
-                    if(value.Descricao.ToString() == "Online")
+                    if (value.Descricao.ToString() == "Online")
                     {
                         Shell.Current.GoToAsync($"exibirSemaforoView?pId={semaforoSelecionado.Id}");
                         Preferences.Set("SemaforoId", semaforoSelecionado.Id);
                         Preferences.Set("SemaforoLatitude", semaforoSelecionado.Latitude);
                         Preferences.Set("SemaforoLongitude", semaforoSelecionado.Longitude);
                         _ = PostHistoricoUsuarioAsync();
-                    } 
+                    }
                     else
                     {
                         Application.Current.MainPage.DisplayAlert("Aviso", "Semaforo selecionado está offline.", "Ok");
