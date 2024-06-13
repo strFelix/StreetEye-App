@@ -11,7 +11,7 @@
 
     <VerticalStackLayout Spacing="30" Padding="20">
         <StackLayout>
-            <Frame HeightRequest="650" Margin="20" Padding="0" HasShadow="false" CornerRadius="20" BackgroundColor="{Binding TrafficLightColor, Converter={StaticResource StatusToColorConverter}}">
+            <Frame HeightRequest="600" Margin="20" Padding="0" HasShadow="false" CornerRadius="20" BackgroundColor="{Binding TrafficLightColor, Converter={StaticResource StatusToColorConverter}}">
                 <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
                     <Label Text="{Binding TrafficLightColor}" 
                            TextColor="{Binding TrafficLightColor, Converter={StaticResource StatusTextColorConverter}}"
