@@ -1,5 +1,4 @@
-﻿using StreetEye_App.Views.Responsaveis;
-using StreetEye_App.Views.Usuarios;
+﻿using StreetEye_App.Views.Usuarios;
 
 namespace StreetEye_App
 {

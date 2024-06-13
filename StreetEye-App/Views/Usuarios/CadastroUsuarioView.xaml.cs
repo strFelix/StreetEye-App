@@ -42,7 +42,7 @@ public partial class CadastroUsuarioView : ContentPage
                     Application.Current.MainPage.DisplayAlert("Informação:", "Data de nascimento inválida.", "OK");
                     ((Entry)sender).Text = "";
                     return;
-                }   
+                }
                 ((Entry)sender).Text = newText;
             }
             else
