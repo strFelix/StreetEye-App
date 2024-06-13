@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="StreetEye_App.Views.Usuarios.AlterarDadosUsuarioView">
+             x:Class="StreetEye_App.Views.Usuarios.AlterarDadosUsuarioView"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Shell.PresentationMode="Animated">
+
+    <ContentPage.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="WhiteSmoke" StatusBarStyle="DarkContent"></mct:StatusBarBehavior>
+    </ContentPage.Behaviors>
+    
     <ScrollView>
         <StackLayout Padding="20" Spacing="20">
 

@@ -7,7 +7,7 @@
     xmlns:usuarios="clr-namespace:StreetEye_App.Views.Usuarios"
     xmlns:responsaveis="clr-namespace:StreetEye_App.Views.Responsaveis"
     Title="StreetEye_App"
-    BackgroundColor="WhiteSmoke">
+    BackgroundColor="#212121">
 
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
@@ -16,16 +16,12 @@
                     <RowDefinition Height="{OnPlatform Android=130, iOS=200}"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="40"></RowDefinition>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <FlexLayout Grid.Row="0" Direction="Row" AlignItems="Center" >
-                    <Frame Padding="0" CornerRadius="40" HeightRequest="80" WidthRequest="80" >
-                        <Image/>
-                    </Frame>
+                <FlexLayout Grid.Row="0" Direction="Row" AlignItems="Center" HorizontalOptions="Center">
+                    <Image Source="suricato.png" MaximumWidthRequest="70"/>
                     <VerticalStackLayout Padding="10,0,0,0" Spacing="0">
-                        <Label Text="StreetEye-App" FontAttributes="Bold" FontSize="Medium" TextColor="Black"/>
+                        <Label Text="Street Eye" FontAttributes="Bold" FontSize="Medium" />
+                        <Label Text="Suricatos"/>
                     </VerticalStackLayout>
                 </FlexLayout>
             </Grid>
@@ -45,8 +41,6 @@
 
     </FlyoutItem>
 
-    <Shell.FlyoutFooter>
-        <Label x:Name="lblLogin" TextColor="Black" FontAttributes="Bold" HorizontalOptions="Center" />
-    </Shell.FlyoutFooter>
-       
+    <ShellContent Title="Sair" Icon="sair.png" ContentTemplate="{DataTemplate usuarios:LoginUsuarioView}" Shell.FlyoutBehavior="Disabled" Shell.NavBarIsVisible="False"></ShellContent>
+
 </Shell>

@@ -13,9 +13,6 @@ namespace StreetEye_App
             Routing.RegisterRoute("cadResponsavelView", typeof(CadastroResponsavelView));
             Routing.RegisterRoute("exibirSemaforoView", typeof(SemaforoView));
             Routing.RegisterRoute("altDadosView", typeof(AlterarDadosUsuarioView));
-
-            string login = Preferences.Get("UsuarioEmail", string.Empty);
-            lblLogin.Text = $"login: {login}";
         }
     }
 }

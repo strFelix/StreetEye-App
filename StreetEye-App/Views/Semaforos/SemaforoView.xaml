@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="StreetEye_App.Views.Semaforos.SemaforoView">
+             x:Class="StreetEye_App.Views.Semaforos.SemaforoView"          
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Shell.PresentationMode="Animated">
+
+    <ContentPage.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="WhiteSmoke" StatusBarStyle="DarkContent"></mct:StatusBarBehavior>
+    </ContentPage.Behaviors>
 
     <VerticalStackLayout Spacing="30" Padding="20">
         <StackLayout>
-            <Frame HeightRequest="500" Margin="20" Padding="0" HasShadow="false" CornerRadius="20" BackgroundColor="{Binding TrafficLightColor, Converter={StaticResource StatusToColorConverter}}">
+            <Frame HeightRequest="650" Margin="20" Padding="0" HasShadow="false" CornerRadius="20" BackgroundColor="{Binding TrafficLightColor, Converter={StaticResource StatusToColorConverter}}">
                 <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
                     <Label Text="{Binding TrafficLightColor}" 
                            TextColor="{Binding TrafficLightColor, Converter={StaticResource StatusTextColorConverter}}"
