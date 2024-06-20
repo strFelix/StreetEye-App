@@ -182,6 +182,24 @@ namespace StreetEye_App.ViewModels.Responsaveis
             }
         }
 
+        public async Task GetResponsavelByUtilizadorIdAsync(int id)
+        {
+            try 
+            {
+                Utilizador utilizador = await _responsavelService.GetResponsavelByIdUtilizadorAsync(id);
+                if (utilizador != null) 
+                {
+                    Preferences.Set("ResponsavelNome", utilizador.Nome);
+                    Preferences.Set("ResponsavelTelefone", utilizador.Telefone);
+                }
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage
+                        .DisplayAlert("Informação:", ex.Message + "\n" + ex.InnerException, "Ok");
+            }
+        }
+
         public async Task GetEnderecoByCepAsync(string cep)
         {
             try

@@ -1,6 +1,8 @@
 ﻿using StreetEye_App.Models;
 using StreetEye_App.Services.Enderecos;
+using StreetEye_App.Services.Responsaveis;
 using StreetEye_App.Services.Usuarios;
+using StreetEye_App.ViewModels.Responsaveis;
 using StreetEye_App.Views.Responsaveis;
 using StreetEye_App.Views.Usuarios;
 using System.Windows.Input;
@@ -11,11 +13,14 @@ namespace StreetEye_App.ViewModels.Usuarios
     {
         private readonly UsuarioService _usuarioService;
         private readonly EnderecoService _enderecoService;
+        private readonly ResponsavelViewModel _responsavelViewModel;
+
 
         public UsuarioViewModel()
         {
             _usuarioService = new UsuarioService();
             _enderecoService = new EnderecoService();
+            _responsavelViewModel = new ResponsavelViewModel();
             InicializarCommads();
         }
 
@@ -204,9 +209,11 @@ namespace StreetEye_App.ViewModels.Usuarios
                     Preferences.Set("UsuarioUf", usuarioAutenticado.Utilizador.UF);
                     Preferences.Set("UsuarioToken", usuarioAutenticado.Token);
 
+                    await _responsavelViewModel.GetResponsavelByUtilizadorIdAsync(usuarioAutenticado.IdUtilizador);
+
                     Application.Current.MainPage = new AppShell();
 
-                }
+                  }
                 else
                 {
                     await Application.Current.MainPage
