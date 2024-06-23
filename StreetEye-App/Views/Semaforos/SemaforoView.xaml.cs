@@ -11,9 +11,4 @@ public partial class SemaforoView : ContentPage
         viewModel = new SseSemaforoViewModel();
         BindingContext = viewModel;
     }
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-        _ = viewModel.StartListeningAsync();
-    }
 }
